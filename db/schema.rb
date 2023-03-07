@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_03_07_143410) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_143410) do
     t.integer "year"
     t.string "duration"
     t.float "rating"
-    t.string "type"
+    t.string "category"
     t.string "genre"
     t.integer "seasons", default: 0
     t.string "actors"
@@ -80,6 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_143410) do
     t.string "platform"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "plateform_url"
   end
 
   create_table "users", force: :cascade do |t|
