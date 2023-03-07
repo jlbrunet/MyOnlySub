@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :first_name, presence: :true
   validates :last_name, presence: :true
   validates :age, presence: :true, numericality: { only_integer: true }
-  validates :availability, presence: :true, numericality: { only_integer: true }
+  #validates :availability, numericality: { only_integer: true }
 
   has_one_attached :photo
 end
