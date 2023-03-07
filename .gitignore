@@ -42,3 +42,5 @@
 .DS_Store
 .env*
 .env*
+# Ignore the DB in JSON for avoiding having it on GH
+/db/data/movies.json
