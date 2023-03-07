@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get "/bookmarks/:id/ticked", to: "bookmarks#ticked", as: :ticked
   get "/bookmarks/:id/seen", to: "bookmarks#seen", as: :seen
   get "/bookmarks/:id/liked", to: "bookmarks#liked", as: :liked
+  get "/bookmarks/:id/unliked", to: "bookmarks#unliked", as: :unliked
 end
