@@ -10,9 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_104602) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_102345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.boolean "seen", default: false
+    t.boolean "ticked", default: false
+    t.boolean "liked"
+    t.integer "priority"
+    t.bigint "user_id", null: false
+    t.bigint "movie_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_bookmarks_on_movie_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "imbdid"
+    t.string "title"
+    t.string "synopsis"
+    t.string "picture_url"
+    t.integer "year"
+    t.string "duration"
+    t.float "rating"
+    t.string "type"
+    t.string "genre"
+    t.integer "seasons", default: 0
+    t.string "actors"
+    t.string "director"
+    t.string "platform"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +53,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_104602) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "age"
+    t.integer "availability"
+    t.string "suggested_platform"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookmarks", "movies"
+  add_foreign_key "bookmarks", "users"
 end
