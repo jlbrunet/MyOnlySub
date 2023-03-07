@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "pages#home"
-  get "/recommendation", to: "pages#recommendation"
   get "/wishlist", to: "pages#list"
   get "/wishlist", to: "pages#validation", as: :validation
   get "/social", to: "pages#social"
