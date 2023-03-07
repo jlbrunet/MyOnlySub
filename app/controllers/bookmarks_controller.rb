@@ -2,19 +2,12 @@ class BookmarksController < ApplicationController
   before_action :look_for_existing_bookmark
   after_action :book_mark_save
 
-# Démarche commune au trois :
-
-    # récuperer l'IMBDid
-    # voir si il existe un bookmark associé à ce IMDB id
-    # si pas de bookmark, en créer un avec IMDB id / current_user et ticked = true
-    # si un bookmark, ticked 'false' => 'true' || ticked 'true' => 'false' (sorte de toggle)
-
   def add
     @bookmark.toggle(:ticked)
   end
 
   def seen
-    if @bookmark.seen = true
+    if @bookmark.seen == true
       @bookmark.seen = false
       @bookmark.liked = nill
     else
@@ -23,17 +16,19 @@ class BookmarksController < ApplicationController
   end
 
   def liked
-    if @bookmark.liked = nill || @bookmark.liked = false
+    if @bookmark.liked.nil? || @bookmark.liked == false
       @bookmark.liked = true
     else
-      @bookmark.liked = nill
+      @bookmark.liked = nil
+    end
   end
 
   def unliked
-    if @bookmark.liked = nill || @bookmark.liked = true
+    if @bookmark.liked.nil? || @bookmark.liked == true
       @bookmark.liked = false
     else
-      @bookmark.liked = nill
+      @bookmark.liked = nil
+    end
   end
 
   private
@@ -52,6 +47,4 @@ class BookmarksController < ApplicationController
   def book_mark_save
     @bookmark.save
   end
-
-
 end
