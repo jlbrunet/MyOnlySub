@@ -1,4 +1,3 @@
-/* line 13, app/assets/stylesheets/components/_login.scss */
 .container-login {
   background-size: cover;
   background-position: center;
@@ -6,41 +5,46 @@
   min-height: calc(100vh - 66px);
 }
 
-/* line 1, app/assets/stylesheets/components/_login.scss */
 .login {
   width: 350px;
   margin: 0 auto;
   margin-top: 100px;
 }
 
-/* line 7, app/assets/stylesheets/components/_login.scss */
+.login-sign-up {
+  width: 350px;
+  margin: 0 auto;
+}
+
+.login-sign-up h2{
+  color: white;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
 .login h2 {
   color: white;
   padding-bottom: 50px;
   text-align: center;
 }
 
-/* line 19, app/assets/stylesheets/components/_login.scss */
 .login-links {
   margin-left: 5px;
 }
 
-/* line 22, app/assets/stylesheets/components/_login.scss */
 .input-login {
   border-radius: 30px;
   height: 45px;
-  opacity: 0.5;
+  opacity: 0.7;
   color: white;
 }
 
-/* line 29, app/assets/stylesheets/components/_login.scss */
 .input-login:focus {
   box-shadow: none;
   border:none;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
-/* line 33, app/assets/stylesheets/components/_login.scss */
 .input-login::-moz-placeholder {
   color: grey;
 }
@@ -48,7 +52,6 @@
   color: grey;
 }
 
-/* line 37, app/assets/stylesheets/components/_login.scss */
 .btn-login {
   border-radius: 30px;
   width: 100%;
@@ -59,29 +62,57 @@
   font-size:20px;
 }
 
-/* line 46, app/assets/stylesheets/components/_login.scss */
 .btn-login:hover {
   opacity: 0.8;
 }
 
-/* line 50, app/assets/stylesheets/components/_login.scss */
-.bottom-btn {
+.btn-login2{
+  border-radius: 30px;
+  width: 100%;
+  height: 45px;
+  background: #f0c79d;
+  border: none;
+  color: white;
+  font-size:15px;
+}
+
+.btn-login2:hover {
+  opacity: 0.8 !important;
+  background-color: #f0c79d;
+  color:white;
+}
+
+.bottom-btn{
   display: flex;
   justify-content: space-between;
+}
+
+.bottom-btn2{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
 }
 
 .bottom-btn label{
   color:white;
 }
 
-/* line 55, app/assets/stylesheets/components/_login.scss */
 .btn-forgot {
   text-decoration: none;
   color: white;
 }
 
-/* line 60, app/assets/stylesheets/components/_login.scss */
 .btn-forgot:hover {
+  opacity: 0.7;
+  color: white;
+}
+
+.btn-forgot2 {
+  text-decoration: none;
+  color: white;
+}
+
+.btn-forgot2:hover {
   opacity: 0.7;
   color: white;
 }
