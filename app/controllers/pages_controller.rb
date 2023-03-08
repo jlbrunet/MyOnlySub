@@ -3,8 +3,7 @@ class PagesController < ApplicationController
 
   def home
     if params[:query].present?
-      sql_query = "title ILIKE :query OR synopsis ILIKE :query OR category ILIKE :query OR genre ILIKE :query OR actors ILIKE :query"
-      @results = Movie.where(sql_query, query: "%#{params[:query]}%")
+      @results = Movie.search_by_title_and_synopsis(params[:query])
     else
       @movies = Movie.all
     end
