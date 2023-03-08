@@ -5,8 +5,6 @@ class BookmarksController < ApplicationController
   def add
     @bookmark.priority = nil
     @bookmark.toggle(:ticked)
-
-    redirect_to root_path
   end
 
   def seen
@@ -16,7 +14,6 @@ class BookmarksController < ApplicationController
     else
       @bookmark.seen = true
     end
-    redirect_to root_path
   end
 
   def liked
@@ -25,7 +22,6 @@ class BookmarksController < ApplicationController
     else
       @bookmark.liked = nil
     end
-    redirect_to root_path
   end
 
   def unliked
@@ -34,7 +30,6 @@ class BookmarksController < ApplicationController
     else
       @bookmark.liked = nil
     end
-    redirect_to root_path
   end
 
   # pour sortable

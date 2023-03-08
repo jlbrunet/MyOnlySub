@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @movies = Movie.all
+    @bookmark = Bookmark.new
   end
 
   def list
