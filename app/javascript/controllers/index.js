@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import MovieModalController from "./movie_modal_controller"
+application.register("movie-modal", MovieModalController)
