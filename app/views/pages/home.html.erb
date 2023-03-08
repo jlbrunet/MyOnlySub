@@ -1,7 +1,7 @@
 <h1>homepage</h1>
 
 <% if @results %>
-  <% @results.each do |movie| %>
+  <% @results.order("rating DESC").each do |movie| %>
     <div class="card-movie">
       <%= image_tag(movie.picture_url, height: 287, width: 192, crop: :fill) %>
       <div class="card-footer d-flex flex-row justify-content-between p-2">
