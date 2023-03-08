@@ -3,6 +3,7 @@ class BookmarksController < ApplicationController
   after_action :book_mark_save
 
   def add
+    @bookmark.priority = nil
     @bookmark.toggle(:ticked)
   end
 
@@ -35,6 +36,11 @@ class BookmarksController < ApplicationController
   def update
     @bookmark = Bookmark.find(params[:id])
     @bookmark.priority = params[:priority][:position]
+    @bookmarks = Bookmark.where(user:current_user).where(ticked: true).order(:priority)
+    @bookmarks.each_with_index do |bookmark, index|
+      bookmark.priority = index + 1
+      bookmark.save
+    end
     # à coder
   end
   # pour sortable
