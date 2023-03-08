@@ -30,6 +30,10 @@
       <div class="form-actions">
         <%= f.submit "Sign In", :class => "btn-login" %>
       </div>
+      <div class="bottom-btn3">
+            <p style="color: white">Don't have an account?</p>
+        <%= link_to "Create an account", new_user_registration_path, class:"btn-forgot" %>
+      </div>
     <% end %>
   </div>
 </div>
