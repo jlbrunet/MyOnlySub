@@ -1,13 +1,21 @@
 <h1>homepage</h1>
 
 <% @movies.where(platform: "Netflix").order("rating DESC").first(20).each do |movie| %>
-  <div>
-  <p> <%= movie.id %></p>
-    <%= image_tag movie.picture_url %>
-    <%= link_to "add",  add_path(movie) %>
-    <%= link_to "seen",  seen_path(movie) %>
-    <%= link_to "liked",  liked_path(movie) %>
-    <%= link_to "unliked",  unliked_path(movie) %>
-
+  <div class="card-movie">
+    <%= image_tag(movie.picture_url, height: 287, width: 192, crop: :fill) %>
+    <div class="card-footer d-flex flex-row justify-content-between p-2">
+      <%= link_to add_path(movie) do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
+      <%= link_to seen_path(movie) do %>
+        <i class="fa-solid fa-eye"></i>
+      <% end %>
+      <%= link_to liked_path(movie) do %>
+        <i class="fa-solid fa-thumbs-up"></i>
+      <% end %>
+      <%= link_to unliked_path(movie) do %>
+        <i class="fa-solid fa-thumbs-down"></i>
+      <% end %>
+    </div>
   </div>
 <% end %>
