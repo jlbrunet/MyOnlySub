@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get "/social", to: "pages#social"
   get "/sub", to: "pages#sub"
 
+  #for sortable
+  patch "/bookmarks/:id", to: "bookmarks#update", as: :priority
+
   get "/bookmarks/:id/add", to: "bookmarks#add", as: :add
   get "/bookmarks/:id/seen", to: "bookmarks#seen", as: :seen
   get "/bookmarks/:id/liked", to: "bookmarks#liked", as: :liked

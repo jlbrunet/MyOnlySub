@@ -1,14 +1,21 @@
 <h1>homepage</h1>
 
-<div>
-  <% @movies.where(platform: "Netflix").order("rating DESC").first(20).each do |movie| %>
-    <div data-controller="add-button" data-add-button-url1-value=<%= add_path(movie)%> data-add-button-url2-value=<%= seen_path(movie)%> data-add-button-url3-value=<%= liked_path(movie)%> data-add-button-url4-value=<%= unliked_path(movie)%>>
-    <p><%= movie.id %></p>
-      <%= image_tag movie.picture_url %>
-      <%= link_to "add",  add_path(movie), data: {action:"click->add-button#insert"} %>
-      <%= link_to "seen",  seen_path(movie), data: {action:"click->add-button#seen"} %>
-      <%= link_to "liked",  liked_path(movie), data: {action:"click->add-button#liked"} %>
-      <%= link_to "unliked",  unliked_path(movie), data: {action:"click->add-button#unliked"} %>
+<% @movies.where(platform: "Netflix").order("rating DESC").first(20).each do |movie| %>
+  <div class="card-movie" data-controller="add-button" data-add-button-url1-value=<%= add_path(movie)%> data-add-button-url2-value=<%= seen_path(movie)%> data-add-button-url3-value=<%= liked_path(movie)%> data-add-button-url4-value=<%= unliked_path(movie)%>%>
+    <%= image_tag(movie.picture_url, height: 287, width: 192, crop: :fill) %>
+    <div class="card-footer d-flex flex-row justify-content-between p-2">
+      <%= link_to add_path(movie), data: {action:"click->add-button#insert"} do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
+      <%= link_to seen_path(movie), data: {action:"click->add-button#seen"} do %>
+        <i class="fa-solid fa-eye"></i>
+      <% end %>
+      <%= link_to liked_path(movie), data: {action:"click->add-button#liked"} do %>
+        <i class="fa-solid fa-thumbs-up"></i>
+      <% end %>
+      <%= link_to unliked_path(movie), data: {action:"click->add-button#unliked"}  do %>
+        <i class="fa-solid fa-thumbs-down"></i>
+      <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-  before_action :look_for_existing_bookmark
+  before_action :look_for_existing_bookmark, except: :update
   after_action :book_mark_save
 
   def add
@@ -31,6 +31,14 @@ class BookmarksController < ApplicationController
     end
   end
 
+  # pour sortable
+  def update
+    @bookmark = Bookmark.find(params[:id])
+    @bookmark.priority = params[:priority][:position]
+    # à coder
+  end
+  # pour sortable
+
   private
 
   def look_for_existing_bookmark
@@ -48,4 +56,10 @@ class BookmarksController < ApplicationController
   def book_mark_save
     @bookmark.save
   end
+
+  # pour sortable
+  def bookmark_params
+    params.require(:bookmark).permit(:priority)
+  end
+  # pour sortable
 end
