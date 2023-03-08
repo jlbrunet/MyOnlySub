@@ -42,7 +42,7 @@
                       placeholder: 'Password Confirmation',
                       input_html: { class: 'input-login-edit' } %>
           <%= f.input :current_password,
-                      hint: "we need your current password to confirm your changes",
+                      hint: "We need your current password to confirm your changes",
                       required: true,
                       input_html: { autocomplete: "current-password" },
                       label: false,
@@ -55,11 +55,9 @@
         </div>
       <% end %>
 
+      <div class="bottom-btn2">
+        <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn-forgot2" %>
+        <%= link_to "Back to home", root_path, class:"btn-forgot2" %>
+      </div>
   </div>
 </div>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
