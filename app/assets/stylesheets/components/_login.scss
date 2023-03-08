@@ -19,6 +19,10 @@
   margin: 0 auto;
 }
 
+.login-sign-up .form-text{
+  color:white;
+}
+
 // Login title page
 
 .login-sign-up h2{
@@ -56,6 +60,32 @@
   color: grey;
 }
 .input-login::placeholder {
+  color: grey;
+}
+
+//INPUT LOGIN EDIT
+
+.input-login-edit {
+  border-radius: 30px;
+  height: 45px;
+  opacity: 0.7;
+}
+
+.input-login-edit .form-text{
+  color:black
+}
+
+.input-login-edit:focus {
+  box-shadow: none;
+  border:none;
+  opacity: 0.9;
+  color:grey
+}
+
+.input-login-edit::-moz-placeholder {
+  color: grey;
+}
+.input-login-edit::placeholder {
   color: grey;
 }
 
