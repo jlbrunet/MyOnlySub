@@ -1,1 +1,12 @@
 <h1>homepage</h1>
+
+<div>
+<% movie = @movies.where(platform: "Netflix").first %>
+ <p> <%= movie.id %></p>
+  <%= image_tag movie.picture_url %>
+  <%= link_to "add",  add_path(movie) %>
+  <%= link_to "seen",  seen_path(movie) %>
+  <%= link_to "liked",  liked_path(movie) %>
+  <%= link_to "unliked",  unliked_path(movie) %>
+
+</div>

@@ -4,15 +4,17 @@ class BookmarksController < ApplicationController
 
   def add
     @bookmark.toggle(:ticked)
+    redirect_to root_path
   end
 
   def seen
     if @bookmark.seen == true
       @bookmark.seen = false
-      @bookmark.liked = nill
+      @bookmark.liked = nil
     else
       @bookmark.seen = true
     end
+    redirect_to root_path
   end
 
   def liked
@@ -21,6 +23,7 @@ class BookmarksController < ApplicationController
     else
       @bookmark.liked = nil
     end
+    redirect_to root_path
   end
 
   def unliked
@@ -29,14 +32,16 @@ class BookmarksController < ApplicationController
     else
       @bookmark.liked = nil
     end
+    redirect_to root_path
   end
 
   private
 
   def look_for_existing_bookmark
-    @movie = Movie.find(params[:movie_id])
-    if current_user.bookmarks.where(movie_id: params[:movie_id]).count.positive?
-      @bookmark = current_user.bookmarks.where(movie_id: params[:movie_id])
+    @movie = Movie.find(params[:id])
+    if current_user.bookmarks.where(movie_id: params[:id]).count.positive?
+      # @bookmark = current_user.bookmarks.where(movie_id: params[:id])
+      @bookmark = current_user.bookmarks.where(movie_id: params[:id])[0]
     else
       @bookmark = Bookmark.new
       @bookmark.movie = @movie
