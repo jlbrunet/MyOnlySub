@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/social", to: "pages#social"
   get "/sub", to: "pages#sub"
 
-  get "/bookmarks/:id/ticked", to: "bookmarks#ticked", as: :ticked
+  get "/bookmarks/:id/add", to: "bookmarks#add", as: :add
   get "/bookmarks/:id/seen", to: "bookmarks#seen", as: :seen
   get "/bookmarks/:id/liked", to: "bookmarks#liked", as: :liked
   get "/bookmarks/:id/unliked", to: "bookmarks#unliked", as: :unliked
