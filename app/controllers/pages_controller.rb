@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def list
-    @bookmarks = Bookmark.where(user:current_user).order(:priority)
+    @bookmarks = Bookmark.where(user:current_user).where(ticked: true).order(:priority)
   end
 
   def social

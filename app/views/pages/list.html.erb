@@ -3,6 +3,6 @@
 <ul data-controller="sortable" data-sortable-resource-name-value="priority">
   <% @bookmarks.each do |bookmark| %>
     <!-- <li data-sortable-update-url="/todos/1">Pet the cat</li> -->
-    <li data-sortable-update-url="<%= priority_path(bookmark) %>"><%= bookmark.id %></li>
+    <li style="color: white;" data-sortable-update-url="<%= priority_path(bookmark) %>"><%= bookmark.movie.title %> - <%= bookmark.priority %></li>
   <% end %>
 </ul>
