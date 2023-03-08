@@ -2,7 +2,12 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @movies = Movie.all
+    if params[:query].present?
+      sql_query = "title ILIKE :query OR synopsis ILIKE :query OR category ILIKE :query OR genre ILIKE :query OR actors ILIKE :query"
+      @results = Movie.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @movies = Movie.all
+    end
   end
 
   def list
