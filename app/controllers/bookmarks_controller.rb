@@ -10,7 +10,7 @@ class BookmarksController < ApplicationController
   def seen
     if @bookmark.seen == true
       @bookmark.seen = false
-      @bookmark.liked = nill
+      @bookmark.liked = nil
     else
       @bookmark.seen = true
     end
