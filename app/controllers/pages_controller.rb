@@ -3,10 +3,11 @@ class PagesController < ApplicationController
 
   def home
     @movies = Movie.all
+    @bookmark = Bookmark.new
   end
 
   def list
-    @bookmarks = Bookmark.where(user:current_user)
+    @bookmarks = Bookmark.where(user: current_user)
   end
 
   def social

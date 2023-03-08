@@ -1,13 +1,14 @@
 <h1>homepage</h1>
 
-<% @movies.where(platform: "Netflix").order("rating DESC").first(20).each do |movie| %>
-  <div>
-  <p> <%= movie.id %></p>
-    <%= image_tag movie.picture_url %>
-    <%= link_to "add",  add_path(movie) %>
-    <%= link_to "seen",  seen_path(movie) %>
-    <%= link_to "liked",  liked_path(movie) %>
-    <%= link_to "unliked",  unliked_path(movie) %>
-
-  </div>
-<% end %>
+<div>
+  <% @movies.where(platform: "Netflix").order("rating DESC").first(20).each do |movie| %>
+    <div data-controller="add-button" data-add-button-url1-value=<%= add_path(movie)%> data-add-button-url2-value=<%= seen_path(movie)%> data-add-button-url3-value=<%= liked_path(movie)%> data-add-button-url4-value=<%= unliked_path(movie)%>>
+    <p><%= movie.id %></p>
+      <%= image_tag movie.picture_url %>
+      <%= link_to "add",  add_path(movie), data: {action:"click->add-button#insert"} %>
+      <%= link_to "seen",  seen_path(movie), data: {action:"click->add-button#seen"} %>
+      <%= link_to "liked",  liked_path(movie), data: {action:"click->add-button#liked"} %>
+      <%= link_to "unliked",  unliked_path(movie), data: {action:"click->add-button#unliked"} %>
+    </div>
+  <% end %>
+</div>
