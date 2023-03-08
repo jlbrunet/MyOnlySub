@@ -78,3 +78,5 @@ end
 
 gem "devise"
 gem "cloudinary"
+
+gem "acts_as_list", "~> 1.1"
