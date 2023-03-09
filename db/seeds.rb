@@ -74,11 +74,14 @@ hashmovies["movies"].each do |movie|
   Movie.create(movie)
 end
 
+
+# a enlever quand on ajoutera plus de film
 Movie.where(platform: "Amazon Instant Video").each do |movie|
   movie.platform = "Disney+"
   movie.save
 end
 
+# a enlever quand on ajoutera plus de film
 Movie.where(platform: "iTunes").each do |movie|
   movie.platform = "AppleTV+"
   movie.save
