@@ -1,7 +1,7 @@
-<h1><%= platform %></h1>
-
+<div class="carroussel-top">
+<%= image_tag("#{platform}.png", width:150, crop: :fill)%>
+</div>
 <div class="wrapper">
-
   <section id="<%= platform %>section1">
     <a href="#<%= platform %>section3" class="arrow__btn">‹</a>
     <% movies[0..5].each do |movie| %>
