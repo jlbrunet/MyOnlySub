@@ -19,21 +19,22 @@
     </div>
   <% end %>
 <% else %>
+  <div class="mt-3">
 
-  <% movies = @movies_netflix %>
-  <% platform = "netflix" %>
-  <%= render "carroussel", movies: movies, platform: platform %>
+    <% movies = @movies_amazon %>
+    <% platform = "amazon" %>
+    <%= render "carroussel", movies: movies, platform: platform %>
 
-  <% movies = @movies_amazon %>
-  <% platform = "amazon" %>
-  <%= render "carroussel", movies: movies, platform: platform %>
+    <% movies = @movies_netflix %>
+    <% platform = "netflix" %>
+    <%= render "carroussel", movies: movies, platform: platform %>
 
-  <% movies = @movies_disney %>
-  <% platform = "disney" %>
-  <%= render "carroussel", movies: movies, platform: platform %>
+    <% movies = @movies_disney %>
+    <% platform = "disney" %>
+    <%= render "carroussel", movies: movies, platform: platform %>
 
-  <% movies = @movies_aptv %>
-  <% platform = "aptv" %>
-  <%= render "carroussel", movies: movies, platform: platform %>
-
+    <% movies = @movies_aptv %>
+    <% platform = "aptv" %>
+    <%= render "carroussel", movies: movies, platform: platform %>
+  </div>
 <% end %>
