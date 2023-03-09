@@ -1,5 +1,1 @@
-<h1>homepage</h1>
-
-<% @movies.where(platform: "Netflix").order("rating DESC").first(20).each do |movie| %>
-    <%= render "cardmovie", movie: movie %>
-<% end %>
+<%= render "list", movies: @movies %>

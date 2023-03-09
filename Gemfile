@@ -76,7 +76,14 @@ group :test do
   gem "webdrivers"
 end
 
+# authentication
 gem "devise"
+
+#photo_stockage
 gem "cloudinary"
 
+#extended_search
+gem "pg_search"
+
+#???
 gem "acts_as_list", "~> 1.1"
