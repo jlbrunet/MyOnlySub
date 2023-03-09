@@ -22,23 +22,56 @@
     <div class="d-flex flex-row modal" id="modal">
       <%= image_tag(movie.picture_url, height: 287, width: 192, crop: :fill) %>
       <div data-action="click->movie-modal#close">
-        <i class="fa-solid fa-xmark"></i>
+        <i class="fa-solid fa-xmark icon-cross"></i>
       </div>
       <div class="m-3">
         <div class="d-flex">
-          <div class="flex col-8">
+          <div class="flex col-8 ms-4 mb-3 mt-2">
             <h1><%= movie.title %></h1>
-            <h4><%= movie.rating %> / 10</h4>
+            <div class="mb-2">
+              <% movie_rating = movie.rating.round %>
+              <% if movie_rating.even? %>
+                <% stars_number = movie_rating / 2 %>
+                <% empty_stars_number = 5 - stars_number %>
+                <% stars_number.times do %>
+                  <i class="fa-solid fa-star"></i>
+                <% end %>
+                <% empty_stars_number.times do %>
+                  <i class="fa-regular fa-star"></i>
+                <% end %>
+              <% else %>
+                <% stars_number = (movie_rating - 1) / 2 %>
+                <% empty_stars_number = 5 - (stars_number + 1) %>
+                <% stars_number.times do %>
+                  <i class="fa-solid fa-star"></i>
+                <% end %>
+                <i class="fa-solid fa-star-half-stroke"></i>
+                <% empty_stars_number.times do %>
+                  <i class="fa-regular fa-star"></i>
+                <% end %>
+              <% end %>
+            </div>
           </div>
-          <p><%= movie.platform %></p>
+          <div class="platform">
+            <% case movie.platform %>
+            <% when "Netflix" %>
+              <%= image_tag("netflix.png")%>
+            <% when "Amazon Prime Video" %>
+              <%= image_tag("amazon.png")%>
+            <% when "AppleTV+" %>
+              <%= image_tag("aptv.png")%>
+            <% else %>
+              <%= image_tag("disney.png")%>
+            <% end %>
+          </div>
         </div>
         <div class="d-flex">
-          <div class="flex col-8 me-2">
+          <div class="flex col-8 me-2 px-4">
             <p><%= movie.synopsis %></p>
           </div>
-          <div class="flex">
-            <p>Genres: <%= movie.genre %></p>
-            <p>Distribution: <%= movie.actors %></p>
+          <div class="flex info">
+            <p><strong>Genres:</strong> <%= movie.genre %></p>
+            <p><strong>Distribution:</strong> <%= movie.actors %></p>
           </div>
         </div>
       </div>
