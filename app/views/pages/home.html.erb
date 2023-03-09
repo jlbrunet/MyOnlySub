@@ -21,7 +21,8 @@
     </div>
   <% end %>
 <% else %>
-  <% @movies.where(platform: "Netflix").order("rating DESC").first(20).each do |movie| %>
+  <%# <% @movies.where(platform: "Netflix").order("rating DESC").first(20).each do |movie| %>
+  <% @movies.each do |movie| %>
         <%= render "cardmovie", movie: movie %>
   <% end %>
 <% end %>

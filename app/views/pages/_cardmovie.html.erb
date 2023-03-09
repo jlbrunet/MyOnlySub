@@ -1,4 +1,5 @@
 <div class="card-movie" data-controller="add-button" data-add-button-url1-value=<%= add_path(movie)%> data-add-button-url2-value=<%= seen_path(movie)%> data-add-button-url3-value=<%= liked_path(movie)%> data-add-button-url4-value=<%= unliked_path(movie)%>%>
+    <p><%=movie.title%></p>
     <%= image_tag(movie.picture_url, height: 287, width: 192, crop: :fill) %>
     <div class="card-footer d-flex flex-row justify-content-between p-2">
       <%= link_to add_path(movie), data: {action:"click->add-button#insert"} do %>
