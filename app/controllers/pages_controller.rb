@@ -4,6 +4,7 @@ class PagesController < ApplicationController
     if params[:query].present?
       @results = Movie.search_by_title_and_synopsis(params[:query])
     else
+      @results = false
       @movies = Movie.all.order("rating DESC")
       @movies_amazon = @movies.where(platform: "Amazon Prime Video").select { |movie|
         Bookmark.where(user:current_user).where(movie_id: movie.id) == [] }
@@ -19,6 +20,10 @@ class PagesController < ApplicationController
       # @movies_aptv = @movies.where(platform: "AppleTV+")
       # @movies_disney = @movies.where(platform: "Disney+")
       
+    end
+    respond_to do |format|
+      format.text { render partial: "pages/list", locals: {movies: @results}, formats: [:html] }
+      format.html # Follow regular flow of Rails
     end
   end
 
