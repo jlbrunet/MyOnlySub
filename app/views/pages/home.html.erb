@@ -1,5 +1,3 @@
-<h1>homepage</h1>
-
 <% if @results %>
   <% @results.each do |movie| %>
     <div class="card-movie">
@@ -23,19 +21,19 @@
 <% else %>
 
   <% movies = @movies_netflix %>
-  <% platform = "N" %>
+  <% platform = "netflix" %>
   <%= render "carroussel", movies: movies, platform: platform %>
 
   <% movies = @movies_amazon %>
-  <% platform = "A" %>
+  <% platform = "amazon" %>
   <%= render "carroussel", movies: movies, platform: platform %>
 
-<% movies = @movies_disney %>
-<% platform = "D" %>
-<%= render "carroussel", movies: movies, platform: platform %>
+  <% movies = @movies_disney %>
+  <% platform = "disney" %>
+  <%= render "carroussel", movies: movies, platform: platform %>
 
-<% movies = @movies_aptv %>
-<% platform = "AP" %>
-<%= render "carroussel", movies: movies, platform: platform %>
+  <% movies = @movies_aptv %>
+  <% platform = "aptv" %>
+  <%= render "carroussel", movies: movies, platform: platform %>
 
 <% end %>
