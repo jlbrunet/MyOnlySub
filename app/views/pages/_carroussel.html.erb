@@ -1,0 +1,34 @@
+<div class="carroussel-top">
+<%= image_tag("#{platform}.png", width:150, crop: :fill)%>
+</div>
+<div class="wrapper">
+  <section id="<%= platform %>section1">
+    <a href="#<%= platform %>section3" class="arrow__btn">‹</a>
+    <% movies[0..5].each do |movie| %>
+      <div class="item">
+        <%= render "cardmovie", movie: movie %>
+      </div>
+    <% end %>
+    <a href="#<%= platform%>section2" class="arrow__btn">›</a>
+  </section>
+
+  <section id="<%=platform%>section2">
+    <a href="#<%=platform%>section1" class="arrow__btn">‹</a>
+    <% movies[6..11].each do |movie| %>
+      <div class="item">
+        <%= render "cardmovie", movie: movie %>
+      </div>
+    <% end %>
+    <a href="#<%= platform%>section3" class="arrow__btn">›</a>
+  </section>
+
+  <section id="<%=platform%>section3">
+    <a href="#<%=platform%>section2" class="arrow__btn">‹</a>
+    <% movies[12..17].each do |movie| %>
+      <div class="item">
+        <%= render "cardmovie", movie: movie %>
+      </div>
+    <% end %>
+    <a href="#<%=platform%>section1" class="arrow__btn">›</a>
+  </section>
+</div>
