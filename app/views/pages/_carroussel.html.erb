@@ -1,0 +1,32 @@
+<div class="wrapper">
+
+  <section id="section1">
+    <a href="#section3" class="arrow__btn">‹</a>
+    <% movies[0..5].each do |movie| %>
+      <div class="item">
+        <%= render "cardmovie", movie: movie %>
+      </div>
+    <% end %>
+    <a href="#section2" class="arrow__btn">›</a>
+  </section>
+
+  <section id="section2">
+    <a href="#section1" class="arrow__btn">‹</a>
+    <% movies[6..11].each do |movie| %>
+      <div class="item">
+        <%= render "cardmovie", movie: movie %>
+      </div>
+    <% end %>
+    <a href="#section3" class="arrow__btn">›</a>
+  </section>
+
+  <section id="section3">
+    <a href="#section2" class="arrow__btn">‹</a>
+    <% movies[12..17].each do |movie| %>
+      <div class="item">
+        <%= render "cardmovie", movie: movie %>
+      </div>
+    <% end %>
+    <a href="#section1" class="arrow__btn">›</a>
+  </section>
+</div>
