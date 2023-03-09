@@ -25,14 +25,18 @@
         <i class="fa-solid fa-xmark"></i>
       </div>
       <div class="m-3">
-        <h1><%= movie.title %></h1>
-        <h4><%= movie.rating %> / 10</h4>
+        <div class="d-flex">
+          <div class="flex col-8">
+            <h1><%= movie.title %></h1>
+            <h4><%= movie.rating %> / 10</h4>
+          </div>
+          <p><%= movie.platform %></p>
+        </div>
         <div class="d-flex">
           <div class="flex col-8 me-2">
             <p><%= movie.synopsis %></p>
           </div>
           <div class="flex">
-            <p><%= movie.platform %></p>
             <p>Genres: <%= movie.genre %></p>
             <p>Distribution: <%= movie.actors %></p>
           </div>
