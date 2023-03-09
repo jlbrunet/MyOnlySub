@@ -3,6 +3,10 @@ class PagesController < ApplicationController
   def home
     if params[:query].present?
       @results = Movie.search_by_title_and_synopsis(params[:query])
+      respond_to do |format|
+        format.html # Follow regular flow of Rails
+        format.text { render partial: "pages/list", locals: {movies: @movies}, formats: [:html] }
+      end
     else
       @movies = Movie.all.order("rating DESC")
       @movies_netflix = @movies.where(platform: "Netflix").first(50)
