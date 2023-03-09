@@ -22,8 +22,4 @@
 
   <% end %>
 
-  <% movies.where(platform: "Netflix").order("rating DESC").first(20).each do |movie| %>
-        <%= render "cardmovie", movie: movie %>
-  <% end %>
-
 </div>
