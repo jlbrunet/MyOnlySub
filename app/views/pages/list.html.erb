@@ -11,3 +11,14 @@
     <% end %>
   </ul>
 </div>
+
+<div class="container">
+  <%= simple_form_for(@user, url: profile_update_path(@user)) do |f| %>
+    <%= f.input :availability, label: "How many hours are you available during the following month ?" %>
+    <%= f.submit "Generate my sub" %>
+  <% end %>
+</div>
+
+<div class="container">
+  <%= link_to sub_path do %>Generate my sub<% end %>
+</div>
