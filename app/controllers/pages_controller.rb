@@ -2,8 +2,12 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @movies = Movie.all
-    @bookmark = Bookmark.new
+    if params[:query].present?
+      @results = Movie.search_by_title_and_synopsis(params[:query])
+    else
+      @movies = Movie.all
+      @bookmark = Bookmark.new
+    end
   end
 
   def list
