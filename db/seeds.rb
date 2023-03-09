@@ -73,3 +73,13 @@ hashmovies = JSON.parse(serialized_movies)
 hashmovies["movies"].each do |movie|
   Movie.create(movie)
 end
+
+Movie.where(platform: "Amazon Instant Video").each do |movie|
+  movie.platform = "Disney+"
+  movie.save
+end
+
+Movie.where(platform: "iTunes").each do |movie|
+  movie.platform = "AppleTV+"
+  movie.save
+end
