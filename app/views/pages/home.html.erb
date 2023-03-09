@@ -23,10 +23,15 @@
 <% else %>
 
   <% movies = @movies_netflix %>
-  <%= render "carroussel", movies: movies %>
+  <% platform = "N" %>
+  <%= render "carroussel", movies: movies, platform: platform %>
 
   <% movies = @movies_amazon %>
-  <%= render "carroussel", movies: movies %>
+  <% platform = "A" %>
+  <%= render "carroussel", movies: movies, platform: platform %>
 
+  <% movies = @movies_disney %>
+  <% platform = "D" %>
+  <%= render "carroussel", movies: movies, platform: platform %>
 
 <% end %>
