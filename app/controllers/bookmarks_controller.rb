@@ -3,8 +3,8 @@ class BookmarksController < ApplicationController
   after_action :book_mark_save
 
   def add
+    @bookmark.priority = nil
     @bookmark.toggle(:ticked)
-    redirect_to root_path
   end
 
   def seen
@@ -14,7 +14,6 @@ class BookmarksController < ApplicationController
     else
       @bookmark.seen = true
     end
-    redirect_to root_path
   end
 
   def liked
@@ -23,7 +22,6 @@ class BookmarksController < ApplicationController
     else
       @bookmark.liked = nil
     end
-    redirect_to root_path
   end
 
   def unliked
@@ -32,13 +30,17 @@ class BookmarksController < ApplicationController
     else
       @bookmark.liked = nil
     end
-    redirect_to root_path
   end
 
   # pour sortable
   def update
     @bookmark = Bookmark.find(params[:id])
     @bookmark.priority = params[:priority][:position]
+    @bookmarks = Bookmark.where(user:current_user).where(ticked: true).order(:priority)
+    @bookmarks.each_with_index do |bookmark, index|
+      bookmark.priority = index + 1
+      bookmark.save
+    end
     # à coder
   end
   # pour sortable

@@ -1,34 +1,5 @@
 <h1>homepage</h1>
 
-<div data-controller="movie-modal">
-  <% @movies.where(platform: "Netflix").order("rating DESC").first(20).each do |movie| %>
-      <div class="card-movie" data-action="click->movie-modal#display">
-        <%= image_tag(movie.picture_url, height: 287, width: 192, crop: :fill) %>
-        <div class="card-footer d-flex flex-row justify-content-between p-2">
-          <%= link_to add_path(movie) do %>
-            <i class="fa-solid fa-plus"></i>
-          <% end %>
-          <%= link_to seen_path(movie) do %>
-            <i class="fa-solid fa-eye"></i>
-          <% end %>
-          <%= link_to liked_path(movie) do %>
-            <i class="fa-solid fa-thumbs-up"></i>
-          <% end %>
-          <%= link_to unliked_path(movie) do %>
-            <i class="fa-solid fa-thumbs-down"></i>
-          <% end %>
-        </div>
-      </div>
-      <div class="d-flex flex-row d-none" data-movie-modal-target="modal">
-        <%= image_tag(movie.picture_url, height: 287, width: 192, crop: :fill) %>
-        <div class="flex m-2">
-          <h1><%= movie.title %></h1>
-          <p><%= movie.synopsis %></p>
-        </div>
-        <div class="flex">
-          <p><%= movie.genre %></p>
-          <p><%= movie.platform %></p>
-        </div>
-      </div>
-  <% end %>
-</div>
+<% @movies.where(platform: "Netflix").order("rating DESC").first(20).each do |movie| %>
+    <%= render "cardmovie", movie: movie %>
+<% end %>
