@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   #for sortable
   patch "/bookmarks/:id", to: "bookmarks#update", as: :priority
 
+  #for availability of the user
+  patch "/", to: "profiles#update", as: :profile_update
+
   get "/bookmarks/:id/add", to: "bookmarks#add", as: :add
   get "/bookmarks/:id/seen", to: "bookmarks#seen", as: :seen
   get "/bookmarks/:id/liked", to: "bookmarks#liked", as: :liked

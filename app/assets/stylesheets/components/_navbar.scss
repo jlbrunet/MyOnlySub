@@ -1,29 +1,41 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: #242424;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  li {
+    color: white;
+    padding: 5px;
+  }
+  li a:hover{
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    color: var(--glow-color);
+    text-shadow: var(--glow-spread-color) 1px 0 10px;
+  }
+  i{
+    padding: 0px 10px 0px 10px;
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    text-shadow: 0 0 0.6em .25em var(--glow-color),
+    0 0 2.5em 2em var(--glow-spread-color),
+    inset 0 0 .5em .1em var(--glow-color);
+  }
+  a{
+    color:white;
+  }
 }
 
-.navbar-lewagon li {
+.profile-name{
   color: white;
-  padding: 5px;
 }
 
-.navbar-lewagon i{
-  padding: 0px 10px 0px 10px;
-  --glow-color: rgb(217, 176, 255);
-  --glow-spread-color: rgba(191, 123, 255, 0.781);
-  --enhanced-glow-color: rgb(231, 206, 255);
-  text-shadow: 0 0 0.6em .25em var(--glow-color),
-  0 0 2.5em 2em var(--glow-spread-color),
-  inset 0 0 .5em .1em var(--glow-color);
-}
-
-.navbar-lewagon a{
-  color:white;
-}
-.navbar-lewagon li a:hover{
-  --glow-color: rgb(217, 176, 255);
-  --glow-spread-color: rgba(191, 123, 255, 0.781);
+.profile-name:hover{
+--glow-color: rgb(217, 176, 255);
+--glow-spread-color: rgba(191, 123, 255, 0.781);
   --enhanced-glow-color: rgb(231, 206, 255);
   color: var(--glow-color);
   text-shadow: var(--glow-spread-color) 1px 0 10px;
@@ -40,17 +52,18 @@
 
 .downdrop{
   background: #242424;
+  a{
+    color:white;
+  }
+  a:hover{
+    color:white !important;
+    text-shadow: none !important;
+    font-weight: bold;
+    background-color: #242424;
+  }
 }
 
-.downdrop a{
-  color:white;
-}
-.downdrop a:hover{
-  color:white !important;
-  text-shadow: none !important;
-  font-weight: bold;
-  background-color: #242424;
-}
+
 //Searchbar
 
 .group6 {

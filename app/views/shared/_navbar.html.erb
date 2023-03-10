@@ -7,17 +7,19 @@
         <%= link_to root_path, class: "navbar-brand" do %>
           <%= image_tag "http://res.cloudinary.com/dzdm1lpgi/image/upload/v1678288069/ekmjcphmr4fhw3vou4pn.png" %>
         <% end %>
+
         <li class="nav-item active">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
+
         <li class="nav-item active">
-          <%= link_to "My wishlist", "#", class: "nav-link" %>
+          <%= link_to "My wishlist", wishlist_path, class: "nav-link" %>
         </li>
         <li class="nav-item active">
-          <%= link_to "Social", "#", class: "nav-link" %>
+          <%= link_to "Social", social_path, class: "nav-link" %>
         </li>
         <li class="nav-item active">
-         <%= link_to "My Sub", edit_user_registration_path , class: "nav-link" %>
+         <%= link_to "My Sub", sub_path, class: "nav-link" %>
         </li>
 
       </ul>
@@ -45,7 +47,7 @@
               <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "#{current_user.first_name}", edit_user_registration_path, class: "nav-link" %>
+            <div class="nav-link profile-name"><%= current_user.first_name %></div>
           </li>
           <li class="nav-item dropdown">
             <%= cl_image_tag current_user.photo.key, height: 40, width: 40, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
