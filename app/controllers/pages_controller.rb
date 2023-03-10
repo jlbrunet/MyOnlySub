@@ -34,10 +34,10 @@ class PagesController < ApplicationController
 
   def sub_variables
     @platforms = {
-      netflix: { name: "Netflix", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 0, order_total: 0 },
-      amazon: { name: "Amazon Instant Video", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 0, order_total: 0 },
-      disney: { name: "Disney+", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 0, order_total: 0 },
-      apple: { name: "Apple+", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 0, order_total: 0 }
+      netflix: { name: "Netflix", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 },
+      amazon: { name: "Amazon Prime Video", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 },
+      disney: { name: "Disney+", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 },
+      apple: { name: "Apple+", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 }
     }
     @user_time = current_user.availability * 60 * 1.5
     @duration = 0
@@ -110,15 +110,15 @@ class PagesController < ApplicationController
       end
     end
 
-    @pair_minutes_extended.sort.reverse!.each_with_index do |pair, index|
+    @pair_minutes_extended.sort_by {|key, value| value}.reverse!.each_with_index do |pair, index|
       @platforms[pair[0].to_sym][:classement] += index + 1
     end
 
-    @pair_indexed_average.sort.reverse!.each_with_index do |pair, index|
+    @pair_indexed_average.sort_by {|key, value| value}.reverse!.each_with_index do |pair, index|
       @platforms[pair[0].to_sym][:classement] += index + 1
     end
 
-    @pair_minutes_wishlist.sort.each_with_index do |pair, index|
+    @pair_minutes_wishlist.sort_by {|key, value| value}.each_with_index do |pair, index|
       @platforms[pair[0].to_sym][:classement] += index + 2
     end
 
@@ -126,7 +126,7 @@ class PagesController < ApplicationController
       @pair_final[platform.to_s] = data[:classement]
     end
 
-    @final_answer = @pair_final.sort.reverse![0][0]
+    @final_answer = @pair_final.sort_by {|key, value| value}[0][0]
 
     @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
     platform_for
