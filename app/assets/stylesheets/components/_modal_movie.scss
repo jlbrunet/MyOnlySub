@@ -1,0 +1,59 @@
+body {
+  position: relative;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content:center;
+  align-items:center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.modal-backdrop {
+  background: transparent;
+}
+
+.modal {
+  position: absolute;
+  position: relative;
+  border-radius: 6px;
+  width: 70vw;
+  height: 50vh;
+  background-color: #242424;
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+
+  p {
+    text-align: justify;
+  }
+
+  .platform img {
+    height: 80px;
+    margin-left: 50px;
+  }
+
+  .icon-cross {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    color: grey;
+  }
+
+  .icon-cross:hover {
+    color: white;
+  }
+
+  .info {
+    color: rgb(185, 185, 185);
+  }
+}

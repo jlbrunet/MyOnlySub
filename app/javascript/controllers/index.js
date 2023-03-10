@@ -10,5 +10,8 @@ application.register("add-button", AddButtonController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import MovieModalController from "./movie_modal_controller"
+application.register("movie-modal", MovieModalController)
+
 import SearchMoviesController from "./search_movies_controller"
 application.register("search-movies", SearchMoviesController)
