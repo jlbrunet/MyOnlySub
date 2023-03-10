@@ -35,7 +35,7 @@ class PagesController < ApplicationController
   def sub_variables
     @platforms = {
       netflix: { name: "Netflix", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 },
-      amazon: { name: "Amazon Instant Video", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 },
+      amazon: { name: "Amazon Prime Video", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 },
       disney: { name: "Disney+", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 },
       apple: { name: "Apple+", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 }
     }
