@@ -86,3 +86,4 @@ Movie.where(platform: "iTunes").each do |movie|
   movie.platform = "AppleTV+"
   movie.save
 end
+
