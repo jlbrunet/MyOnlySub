@@ -4,7 +4,7 @@
 
   <div class="d-flex flex-row align-items-center">
     <h4 class="me-3">We suggest you to subscribe for the next month to :</h4>
-    <%= image_tag("#{@final_answer}.png", width:150, crop: :fill)%>
+    <%= image_tag("#{@platform_for_logo}.png", width:150, crop: :fill)%>
   </div>
 
     <p>Description of the platform : </p>
@@ -14,8 +14,24 @@
       <li>Number of screen</li>
     </ul>
 
-    <h4>Movies to watch on the platform:</h4>
-
     <h4>Series to watch on the platform:</h4>
+    <div class="d-flex flex-row flex-wrap">
+      <% @bookmarks.each do |bookmark| %>
+        <% movie = Movie.find(bookmark.movie_id) %>
+        <% if movie[:category] == "series" && movie[:platform] == @platform_for_filter %>
+          <%= render "cardmovie", movie: movie %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <h4>Movies to watch on the platform:</h4>
+      <div class="d-flex flex-row flex-wrap">
+        <% @bookmarks.each do |bookmark| %>
+          <% movie = Movie.find(bookmark.movie_id) %>
+          <% if movie[:category] == "movie" && movie[:platform] == @platform_for_filter %>
+            <%= render "cardmovie", movie: movie %>
+          <% end %>
+        <% end %>
+      </div>
 
 </div>
