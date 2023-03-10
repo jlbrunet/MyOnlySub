@@ -19,7 +19,7 @@ class PagesController < ApplicationController
       # @movies_netflix = @movies.where(platform: "Netflix")
       # @movies_aptv = @movies.where(platform: "AppleTV+")
       # @movies_disney = @movies.where(platform: "Disney+")
-      
+
     end
     respond_to do |format|
       format.text { render partial: "pages/list", locals: {movies: @results}, formats: [:html] }
