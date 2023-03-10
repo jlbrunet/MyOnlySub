@@ -47,16 +47,15 @@ class PagesController < ApplicationController
     sub_variables
 
     bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
-    @durations = []
     bookmarks.each do |bookmark|
       platform_name = bookmark.movie.platform
       @platforms.each do |_platform, data|
         if data.value?(platform_name)
           data[:minutes_wishlist] = sub_platform_minutes(bookmark, data[:name], data[:minutes_wishlist])
           if @duration <= @user_time
+            last_data_user = data[:minutes_user]
             data[:minutes_user] = sub_platform_minutes(bookmark, data[:name], data[:minutes_user])
-            @duration += data[:minutes_user]
-            @durations << @duration
+            @duration += data[:minutes_user] - last_data_user
           end
         end
       end
@@ -94,38 +93,40 @@ class PagesController < ApplicationController
   def sub
     sub_platform_declaration
 
-    pair_minutes_extended = {}
-    pair_minutes_wishlist = {}
-    pair_indexed_average = {}
-    pair_final = {}
+    @pair_minutes_extended = {}
+    @pair_minutes_wishlist = {}
+    @pair_indexed_average = {}
+    @pair_final = {}
 
     @platforms.each do |platform, data|
-      pair_minutes_extended[platform.to_s] = data[:minutes_user]
-      pair_indexed_average[platform.to_s] = data[:order].to_f / data[:order_total]
+      @pair_minutes_extended[platform.to_s] = data[:minutes_user]
+      @pair_indexed_average[platform.to_s] = data[:order].to_f / data[:order_total]
       if data[:minutes_user] >= @user_time
         data[:classement] = 1
+      elsif data[:minutes_user] != 0
+        @pair_minutes_wishlist[platform.to_s] = data[:minutes_wishlist]
       else
-        pair_minutes_wishlist[platform.to_s] = data[:minutes_wishlist]
+        data[:classement] = 5
       end
     end
 
-    pair_minutes_extended.sort.reverse!.each_with_index do |pair, index|
+    @pair_minutes_extended.sort.reverse!.each_with_index do |pair, index|
       @platforms[pair[0].to_sym][:classement] += index + 1
     end
 
-    pair_indexed_average.sort.reverse!.each_with_index do |pair, index|
+    @pair_indexed_average.sort.reverse!.each_with_index do |pair, index|
       @platforms[pair[0].to_sym][:classement] += index + 1
     end
 
-    pair_minutes_wishlist.sort.reverse!.each_with_index do |pair, index|
+    @pair_minutes_wishlist.sort.each_with_index do |pair, index|
       @platforms[pair[0].to_sym][:classement] += index + 2
     end
 
     @platforms.each do |platform, data|
-      pair_final[platform.to_s] = data[:classement]
+      @pair_final[platform.to_s] = data[:classement]
     end
 
-    @final_answer = pair_final.sort.reverse![0][0]
+    @final_answer = @pair_final.sort.reverse![0][0]
   end
 
   def social
