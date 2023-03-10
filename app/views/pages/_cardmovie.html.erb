@@ -1,6 +1,7 @@
 <div data-controller="movie-modal" >
-  <div class="card-movie" data-action="click->movie-modal#display" data-controller="add-button" data-add-button-url1-value=<%= add_path(movie)%> data-add-button-url2-value=<%= seen_path(movie)%> data-add-button-url3-value=<%= liked_path(movie)%> data-add-button-url4-value=<%= unliked_path(movie)%>%>
+  <div class="card-movie d-flex flex-column" data-controller="add-button" data-add-button-url1-value=<%= add_path(movie)%> data-add-button-url2-value=<%= seen_path(movie)%> data-add-button-url3-value=<%= liked_path(movie)%> data-add-button-url4-value=<%= unliked_path(movie)%>%>
     <%= image_tag(movie.picture_url, height: 287, width: 192, crop: :fill) %>
+    <div class="clickable-zone" data-action="click->movie-modal#display"></div>
     <div class="card-footer d-flex flex-row justify-content-between p-2">
       <%= link_to add_path(movie), data: {action:"click->add-button#insert"} do %>
         <i class="fa-solid fa-plus"></i>
