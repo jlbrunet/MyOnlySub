@@ -47,7 +47,7 @@ class PagesController < ApplicationController
     sub_variables
 
     bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
-
+    @durations = []
     bookmarks.each do |bookmark|
       platform_name = bookmark.movie.platform
       @platforms.each do |_platform, data|
@@ -56,6 +56,7 @@ class PagesController < ApplicationController
           if @duration <= @user_time
             data[:minutes_user] = sub_platform_minutes(bookmark, data[:name], data[:minutes_user])
             @duration += data[:minutes_user]
+            @durations << @duration
           end
         end
       end
