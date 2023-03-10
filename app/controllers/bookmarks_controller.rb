@@ -10,7 +10,7 @@ class BookmarksController < ApplicationController
   def seen
     if @bookmark.seen == true
       @bookmark.seen = false
-      @bookmark.liked = nil
+      # @bookmark.liked = nil
     else
       @bookmark.seen = true
     end
@@ -41,7 +41,6 @@ class BookmarksController < ApplicationController
       bookmark.priority = index + 1
       bookmark.save
     end
-    # à coder
   end
   # pour sortable
 
@@ -50,7 +49,6 @@ class BookmarksController < ApplicationController
   def look_for_existing_bookmark
     @movie = Movie.find(params[:id])
     if current_user.bookmarks.where(movie_id: params[:id]).count.positive?
-      # @bookmark = current_user.bookmarks.where(movie_id: params[:id])
       @bookmark = current_user.bookmarks.where(movie_id: params[:id])[0]
     else
       @bookmark = Bookmark.new
