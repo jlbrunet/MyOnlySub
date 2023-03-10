@@ -126,7 +126,7 @@ class PagesController < ApplicationController
       @pair_final[platform.to_s] = data[:classement]
     end
 
-    @final_answer = pair_final.sort.reverse![0][0]
+    @final_answer = @pair_final.sort.reverse![0][0]
 
     @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
     platform_for
