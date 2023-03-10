@@ -10,7 +10,6 @@ export default class extends Controller {
   }
 
   display() {
-    // console.log(this.modalTarget);
     this.modalTarget.classList.toggle('d-none');
   }
 
