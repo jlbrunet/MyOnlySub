@@ -125,6 +125,27 @@ class PagesController < ApplicationController
     end
 
     @final_answer = pair_final.sort.reverse![0][0]
+
+
+    @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
+    platform_for
+  end
+
+  def platform_for
+    case @final_answer.to_s
+    when "netflix"
+      @platform_for_logo = "netflix"
+      @platform_for_filter = "Netflix"
+    when "amazon"
+      @platform_for_logo = "amazon"
+      @platform_for_filter = "Amazon Prime Video"
+    when "disney"
+      @platform_for_logo = "disney"
+      @platform_for_filter = "Disney+"
+    when "apple"
+      @platform_for_logo = "aptv"
+      @platform_for_filter = "AppleTV+"
+    end
   end
 
   def social
