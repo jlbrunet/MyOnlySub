@@ -76,6 +76,12 @@ end
 
 
 # a enlever quand on ajoutera plus de film
+Movie.where(platform: "Amazon Instant Video").first(50).each do |movie|
+  movie.platform = "Amazon Prime Video"
+  movie.save
+end
+
+# a enlever quand on ajoutera plus de film
 Movie.where(platform: "Amazon Instant Video").each do |movie|
   movie.platform = "Disney+"
   movie.save
@@ -86,4 +92,3 @@ Movie.where(platform: "iTunes").each do |movie|
   movie.platform = "AppleTV+"
   movie.save
 end
-
