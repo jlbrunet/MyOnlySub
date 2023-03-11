@@ -4,22 +4,22 @@
     <div class="clickable-zone" data-action="click->movie-modal#display"></div>
     <div class="card-footer d-flex flex-row justify-content-between p-2">
       <% if movie.bookmarks != [] && movie.bookmarks.first[:ticked] == true %>
-        <%= link_to add_path(movie), data: {action:"click->add-button#insert"} do %>
-          <i class="fa-solid fa-trash"></i>
+        <%= link_to add_path(movie), data: {action:"click->add-button#exit"} do %>
+          <i class="fa-solid fa-trash buttons-footer-card"></i>
         <% end %>
       <% else %>
         <%= link_to add_path(movie), data: {action:"click->add-button#insert"} do %>
-          <i class="fa-solid fa-plus"></i>
+          <i class="fa-solid fa-plus buttons-footer-card" data-add-button-target= "addlink"></i>
         <% end %>
       <% end %>
       <%= link_to seen_path(movie), data: {action:"click->add-button#seen"} do %>
-        <i class="fa-solid fa-eye"></i>
+        <i class="fa-solid fa-eye buttons-footer-card"></i>
       <% end %>
       <%= link_to liked_path(movie), data: {action:"click->add-button#liked"} do %>
-        <i class="fa-solid fa-thumbs-up"></i>
+        <i class="fa-solid fa-thumbs-up buttons-footer-card"></i>
       <% end %>
       <%= link_to unliked_path(movie), data: {action:"click->add-button#unliked"} do %>
-        <i class="fa-solid fa-thumbs-down"></i>
+        <i class="fa-solid fa-thumbs-down buttons-footer-card"></i>
       <% end %>
     </div>
   </div>
