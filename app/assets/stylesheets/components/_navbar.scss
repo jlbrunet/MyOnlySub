@@ -64,7 +64,6 @@
 }
 
 .navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
   color: white
 }
 
@@ -87,13 +86,18 @@
 
 
 //Searchbar
+.matt{
+  flex: 1;
+  :first-child{
+    flex: 1;
+  }
+}
 
 .group6 {
   display: flex;
   line-height: 28px;
   align-items: center;
   position: relative;
-  width: 590px;
  }
 
  .input6 {

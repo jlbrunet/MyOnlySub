@@ -93,10 +93,12 @@ li {
 // Button generate sub
 
 .wish-sub-btn{
-  margin-top:100px
+  margin-top:100px;
+  text-align: center;
 }
 
 .btn-sub {
+  display: inline-block;
   --glow-color: rgb(217, 176, 255);
   --glow-spread-color: rgba(191, 123, 255, 0.781);
   --enhanced-glow-color: rgb(231, 206, 255);
@@ -116,7 +118,6 @@ li {
   text-shadow: 0 0 .5em var(--glow-color);
   position: relative;
   transition: all 0.3s;
-  margin-left: 140px;
  }
 
  .btn-sub::after {
