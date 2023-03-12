@@ -1,25 +1,26 @@
 <div data-controller="movie-modal" >
   <div class="card-movie d-flex flex-column" data-controller="add-button" data-add-button-url1-value=<%= add_path(movie)%> data-add-button-url2-value=<%= seen_path(movie)%> data-add-button-url3-value=<%= liked_path(movie)%> data-add-button-url4-value=<%= unliked_path(movie)%>%>
+    <i data-add-button-target= "checkbutton"></i>
     <%= image_tag(movie.picture_url, height: 287, width: 192, crop: :fill) %>
     <div class="clickable-zone" data-action="click->movie-modal#display"></div>
     <div class="card-footer d-flex flex-row justify-content-between p-2">
       <% if movie.bookmarks != [] && movie.bookmarks.first[:ticked] == true %>
-        <%= link_to add_path(movie), data: {action:"click->add-button#insert"} do %>
-          <i class="fa-solid fa-trash"></i>
+        <%= link_to add_path(movie), data: {action:"click->add-button#exit"} do %>
+          <i class="fa-solid fa-trash buttons-footer-card"></i>
         <% end %>
       <% else %>
         <%= link_to add_path(movie), data: {action:"click->add-button#insert"} do %>
-          <i class="fa-solid fa-plus"></i>
+          <i class="fa-solid fa-plus buttons-footer-card" data-add-button-target= "addlink"></i>
         <% end %>
       <% end %>
       <%= link_to seen_path(movie), data: {action:"click->add-button#seen"} do %>
-        <i class="fa-solid fa-eye"></i>
+        <i class="fa-solid fa-eye buttons-footer-card"></i>
       <% end %>
       <%= link_to liked_path(movie), data: {action:"click->add-button#liked"} do %>
-        <i class="fa-solid fa-thumbs-up"></i>
+        <i class="fa-solid fa-thumbs-up buttons-footer-card"></i>
       <% end %>
       <%= link_to unliked_path(movie), data: {action:"click->add-button#unliked"} do %>
-        <i class="fa-solid fa-thumbs-down"></i>
+        <i class="fa-solid fa-thumbs-down buttons-footer-card"></i>
       <% end %>
     </div>
   </div>
