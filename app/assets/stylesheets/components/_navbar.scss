@@ -96,8 +96,14 @@
 
 
 //Searchbar
-.matt {
+
+.navbar-first {
+  flex: 0;
+}
+
+.navbar-second {
   flex: 1;
+  margin-left: 10px;
   :first-child {
     margin-left: auto;
   }
