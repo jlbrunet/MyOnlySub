@@ -7,9 +7,6 @@ import { application } from "./application"
 import AddButtonController from "./add_button_controller"
 application.register("add-button", AddButtonController)
 
-import EnableSubmitController from "./enable_submit_controller"
-application.register("enable-submit", EnableSubmitController)
-
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
@@ -24,3 +21,6 @@ application.register("sub-modal", SubModalController)
 
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
+
+import WaitingController from "./waiting_controller"
+application.register("waiting", WaitingController)
