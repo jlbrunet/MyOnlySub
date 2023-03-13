@@ -9,6 +9,12 @@ class PagesController < ApplicationController
       @movies_netflix = @movies.where(platform: "Netflix").select { |movie| condition(movie) }
       @movies_aptv = @movies.where(platform: "AppleTV+").select { |movie| condition(movie) }
       @movies_disney = @movies.where(platform: "Disney+").select { |movie| condition(movie) }
+
+      @movies_comedy = @movies.where("genre ILIKE ?", "%comedy%").select { |movie| condition(movie) }.shuffle
+      @movies_action = @movies.where("genre ILIKE ?", "%action%").select { |movie| condition(movie) }.shuffle
+      @movies_adventure = @movies.where("genre ILIKE ?", "%adventure%").select { |movie| condition(movie) }.shuffle
+      @movies_horror = @movies.where("genre ILIKE ?", "%horror%").select { |movie| condition(movie) }.shuffle
+      @movies_fantasy = @movies.where("genre ILIKE ?", "%fantasy%").select { |movie| condition(movie) }.shuffle
     end
     respond_to do |format|
       format.text { render partial: "pages/list", locals: {movies: @results}, formats: [:html] }

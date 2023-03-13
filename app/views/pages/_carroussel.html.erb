@@ -1,5 +1,10 @@
 <div class="carroussel-top">
-<%= image_tag("#{platform}.png", width:150, crop: :fill)%>
+<% if platform == "netflix" || platform ==  "aptv" || platform == "amazon" || platform == "disney" %>
+  <%= image_tag("#{platform}.png", width:150, crop: :fill)%>
+<% else %>
+  <h1><%= platform %></h1>
+<% end %>
+
 </div>
 <div class="wrapper">
   <section id="<%= platform %>section1">
