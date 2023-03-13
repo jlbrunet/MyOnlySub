@@ -4,12 +4,10 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-
   li {
     color: white;
     padding: 5px;
   }
-
   li a:hover {
     --glow-color: rgb(217, 176, 255);
     --glow-spread-color: rgba(191, 123, 255, 0.781);
@@ -17,26 +15,11 @@
     color: var(--glow-color);
     text-shadow: var(--glow-spread-color) 1px 0 10px;
   }
-
   a {
     color: white;
-  }
-
-  i {
-    padding: 0px 10px 0px 10px;
-    --glow-color: rgb(217, 176, 255);
-    --glow-spread-color: rgba(191, 123, 255, 0.781);
-    --enhanced-glow-color: rgb(231, 206, 255);
-    text-shadow: 0 0 0.6em .25em var(--glow-color),
-      0 0 2.5em 2em var(--glow-spread-color),
-      inset 0 0 .5em .1em var(--glow-color);
-  }
-
-  a {
     position: relative;
     display: inline-block;
   }
-
   a::before {
     content: '';
     position: absolute;
@@ -51,32 +34,41 @@
     transform-origin: center;
     transition: scale 0.25s;
   }
-
   a:hover::before {
     scale: 1;
   }
+  // Icone Social
+
+  // i {
+    //   padding: 0px 10px 0px 10px;
+    //   --glow-color: rgb(217, 176, 255);
+    //   --glow-spread-color: rgba(191, 123, 255, 0.781);
+    //   --enhanced-glow-color: rgb(231, 206, 255);
+    //   text-shadow: 0 0 0.6em .25em var(--glow-color),
+    //     0 0 2.5em 2em var(--glow-spread-color),
+    //     inset 0 0 .5em .1em var(--glow-color);
+    // }
 }
 
 
-.profile-name {
-  color: white;
-}
-
-.profile-name:hover {
-  --glow-color: rgb(217, 176, 255);
-  --glow-spread-color: rgba(191, 123, 255, 0.781);
-  --enhanced-glow-color: rgb(231, 206, 255);
-  color: var(--glow-color);
-  text-shadow: var(--glow-spread-color) 1px 0 10px;
-}
 
 .navbar-lewagon .navbar-collapse {
   color: white
 }
 
+// Logo homepage
+
 .navbar-lewagon .navbar-brand img {
   width: 50px;
   text-decoration: none;
+}
+
+// Photo profil navbar
+.profile-name{
+  color: white;
+}
+.profile-name:hover{
+  color: white;
 }
 
 .downdrop {
@@ -93,7 +85,6 @@
     background-color: #242424;
   }
 }
-
 
 //Searchbar
 
