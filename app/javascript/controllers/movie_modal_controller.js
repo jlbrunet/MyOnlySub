@@ -6,11 +6,10 @@ export default class extends Controller {
   static targets = ["modal"]
 
   connect() {
-    // console.log("coucou");
   }
 
   display() {
-    this.modalTarget.classList.toggle('d-none');
+    this.modalTarget.classList.toggle('d-none')
   }
 
   close() {
