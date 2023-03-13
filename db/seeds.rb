@@ -92,3 +92,17 @@ Movie.where(platform: "iTunes").each do |movie|
   movie.platform = "AppleTV+"
   movie.save
 end
+
+Movie.where(category: "movie").each do |movie|
+  if movie.duration.gsub(" min", "").to_i < 60
+    movie.duration = "120 min"
+    movie.save
+  end
+end
+
+Movie.where(category: "series").each do |serie|
+  if serie.duration.gsub(" min", "").to_i < 20
+    serie.duration = "40 min"
+    serie.save
+  end
+end
