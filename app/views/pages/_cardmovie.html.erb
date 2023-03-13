@@ -1,6 +1,11 @@
 <div data-controller="movie-modal">
+
   <div class="card-movie d-flex flex-column" data-controller="add-button" data-add-button-url1-value=<%= add_path(movie)%> data-add-button-url2-value=<%= seen_path(movie)%> data-add-button-url3-value=<%= liked_path(movie)%> data-add-button-url4-value=<%= unliked_path(movie)%>%>
     <i data-add-button-target= "checkbutton"></i>
+      <div class="border-when-selected">
+    <i class="fa-solid fa-check ticked-add-wishlist"></i>
+    </div>
+
     <%= image_tag(movie.picture_url, height: 287, width: 192, crop: :fill) %>
     <div class="clickable-zone" data-action="click->movie-modal#display"></div>
     <div class="card-footer d-flex flex-row justify-content-between p-2">
