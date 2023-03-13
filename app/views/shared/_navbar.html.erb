@@ -1,24 +1,26 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse navbar-first" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
 
         <%= link_to root_path, class: "navbar-brand" do %>
           <%= image_tag "http://res.cloudinary.com/dzdm1lpgi/image/upload/v1678288069/ekmjcphmr4fhw3vou4pn.png" %>
         <% end %>
 
-        <li class="nav-item active">
-          <%= link_to "Home", root_path, class: "nav-link" %>
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link"%>
         </li>
 
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to "My wishlist", wishlist_path, class: "nav-link" %>
         </li>
-        <%# <li class="nav-item active">
+
+          <%# <li class="nav-item active">
           <%= link_to "Social", social_path, class: "nav-link" %>
-        <%# </li> %>
-        <li class="nav-item active">
+          <%# </li> %>
+
+        <li class="nav-item">
          <%= link_to "My Sub", sub_path, class: "nav-link" %>
         </li>
 
@@ -26,9 +28,9 @@
     </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto navbar-second">
         <% if user_signed_in? %>
-          <li class="nav-item">
+          <li class="nav-item nav-item-search">
             <div >
               <%= form_with url: root_path, method: :get, html: {class: "group6", data: {search_movies_target: "form"}} do |f| %>
                       <%= f.text_field :query,
@@ -41,11 +43,11 @@
               <% end %>
             </div>
           </li>
-          <li class="nav-item">
-            <%= link_to root_path, class: "nav-link" do %>
-              <i class="fa-solid fa-bell"></i>
-              <% end %>
-          </li>
+
+              <%# <li class="nav-item"></li>
+              <%= link_to root_path, class: "nav-link" do <i class="fa-solid fa-bell"></i>%>
+              <%# end %>
+
           <li class="nav-item">
             <div class="nav-link profile-name"><%= current_user.first_name %></div>
           </li>
