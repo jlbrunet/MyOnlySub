@@ -29,13 +29,14 @@
         <br>
         <div id="time-modal">
           <p><i class="fa-sharp fa-solid fa-clock"></i> How many hours are you available during the following month ?</p>
-          <%= simple_form_for(@user, url: profile_update_path(@user)) do |f| %>
+          <%= simple_form_for(@user, url: profile_update_path(@user), html: { novalidate: false }) do |f| %>
             <%= f.input :availability,
+            required: true,
             label: false,
             placeholder: "How many hours ?",
-            input_html: { class: 'input-login-sub' }
+            input_html: { class: 'input-login-sub', min: '1' }
             %>
-            <%= f.submit "Validate my availability", :class => "btn-sub2"%>
+            <%= f.submit "Validate my availability", :class => "btn-sub2" %>
           <% end %>
         </div>
       </div>
@@ -44,4 +45,4 @@
 
 </div>
 
-<%# <%= render "waiting"%> 
+<%# <%= render "waiting"%>

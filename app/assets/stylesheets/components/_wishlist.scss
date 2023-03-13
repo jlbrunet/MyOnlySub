@@ -77,6 +77,15 @@ li {
   color: grey;
 }
 
+.form-control.is-valid:not(:valid) {
+  border-color: transparent;
+  background: white;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
 // Button validate availability
 
 .btn-sub2{
