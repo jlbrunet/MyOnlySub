@@ -18,3 +18,6 @@ application.register("search-movies", SearchMoviesController)
 
 import SubModalController from "./sub_modal_controller"
 application.register("sub-modal", SubModalController)
+
+import TypedJsController from "./typed_js_controller"
+application.register("typed-js", TypedJsController)
