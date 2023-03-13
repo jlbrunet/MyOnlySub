@@ -19,7 +19,9 @@
       <% @bookmarks.each do |bookmark| %>
         <% movie = Movie.find(bookmark.movie_id) %>
         <% if movie[:category] == "series" && movie[:platform] == @platform_for_filter %>
-          <%= render "cardmovie", movie: movie %>
+          <div data-controller="remove" data-remove-url5-value=<%= add_path(movie)%>>
+            <%= render "cardmovie", movie: movie %>
+          </div>
         <% end %>
       <% end %>
     </div>
@@ -29,7 +31,9 @@
         <% @bookmarks.each do |bookmark| %>
           <% movie = Movie.find(bookmark.movie_id) %>
           <% if movie[:category] == "movie" && movie[:platform] == @platform_for_filter %>
+          <div data-controller="remove" data-remove-url5-value=<%= add_path(movie)%>>
             <%= render "cardmovie", movie: movie %>
+          </div>
           <% end %>
         <% end %>
       </div>
