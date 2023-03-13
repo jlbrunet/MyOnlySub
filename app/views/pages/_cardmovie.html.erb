@@ -5,8 +5,8 @@
     <div class="clickable-zone" data-action="click->movie-modal#display"></div>
     <div class="card-footer d-flex flex-row justify-content-between p-2">
       <% if movie.bookmarks.where(user: current_user) != [] && movie.bookmarks.where(user: current_user).first[:ticked] == true %>
-        <%= link_to add_path(movie), data: {action:"click->remove#exit"} do %>
-          <i class="fa-solid fa-trash buttons-footer-card"></i>
+        <%= link_to add_path(movie), data: {action:"click->add-button#exit"} do %>
+          <i class="fa-solid fa-trash buttons-footer-card" data-add-button-target = "removelink"></i>
         <% end %>
       <% else %>
         <%= link_to add_path(movie), data: {action:"click->add-button#insert"} do %>

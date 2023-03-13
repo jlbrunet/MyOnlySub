@@ -7,9 +7,7 @@
         <!-- <li data-sortable-update-url="/todos/1">Pet the cat</li> -->
         <li style="color: white;" data-sortable-update-url="<%= priority_path(bookmark) %>">
           <% movie = bookmark.movie %>
-          <div data-controller="remove" data-remove-url5-value=<%= add_path(movie)%>>
             <%= render "cardmovie", movie: movie %>
-          </div>
         </li>
       <% end %>
     </ul>
