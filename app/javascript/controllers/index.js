@@ -13,5 +13,8 @@ application.register("hello", HelloController)
 import MovieModalController from "./movie_modal_controller"
 application.register("movie-modal", MovieModalController)
 
+import RemoveController from "./remove_controller"
+application.register("remove", RemoveController)
+
 import SearchMoviesController from "./search_movies_controller"
 application.register("search-movies", SearchMoviesController)
