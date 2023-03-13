@@ -5,7 +5,7 @@
       <ul class="navbar-nav me-auto">
 
         <%= link_to root_path, class: "navbar-brand" do %>
-            <%= image_tag "http://res.cloudinary.com/dzdm1lpgi/image/upload/v1678706265/umix7mnldjdu8klw1jxr.png" %>
+            <%= image_tag "http://res.cloudinary.com/dzdm1lpgi/image/upload/v1678711166/zgy1nsz4ojh7sybqvaa4.png" %>
         <% end %>
 
         <li class="nav-item underlined">
@@ -75,7 +75,7 @@
               <%= form_with url: root_path, method: :get, html: {class: "group6", data: {search_movies_target: "form"}} do |f| %>
                       <%= f.text_field :query,
                       class: "input6",
-                      placeholder: "Type a movie title",
+                      placeholder: "Titles, actors, directors, categories",
                       value: params[:query],
                       data: {search_movies_target: "input",
                       action: "keyup->search-movies#update"} %>
