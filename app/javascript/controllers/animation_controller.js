@@ -24,9 +24,4 @@ export default class extends Controller {
     this.moviesseriesTarget.classList.remove("d-none")
     this.ibuttonTarget.classList.remove("d-none")
   }
-
-  i() {
-    this.infoTarget.classList.toggle("d-none")
-  }
-
 }

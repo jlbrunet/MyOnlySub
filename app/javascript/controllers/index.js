@@ -13,6 +13,9 @@ application.register("animation", AnimationController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import InfoModalController from "./info_modal_controller"
+application.register("info-modal", InfoModalController)
+
 import MovieModalController from "./movie_modal_controller"
 application.register("movie-modal", MovieModalController)
 
