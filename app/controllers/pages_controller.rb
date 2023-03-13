@@ -32,6 +32,11 @@ class PagesController < ApplicationController
     @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
   end
 
+  def favorites
+    @user = current_user
+    @bookmarks = Bookmark.where(user: current_user).where(liked: true)
+  end
+
   def sub_variables
     @platforms = {
       netflix: { name: "Netflix", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 },
