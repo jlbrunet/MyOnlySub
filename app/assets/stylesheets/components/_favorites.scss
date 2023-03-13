@@ -1,0 +1,12 @@
+.favorites-container {
+  width: 90%;
+  height: 150vh;
+  margin-top: 2rem;
+  margin-left: 5%;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

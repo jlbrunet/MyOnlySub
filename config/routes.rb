@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "/wishlist", to: "pages#list"
   get "/wishlist", to: "pages#validation", as: :validation
+  get "/favorites", to: "pages#favorites"
   get "/social", to: "pages#social"
   get "/sub", to: "pages#sub"
 
