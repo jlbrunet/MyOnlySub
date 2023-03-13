@@ -37,12 +37,10 @@ export default class extends Controller {
       this.element.remove()
     }
     else {
-      this.element.classList.toggle('border-add-wishlist')
       this.removelinkTarget.classList.toggle('fa-plus')
       this.removelinkTarget.classList.toggle('fa-trash')
-      this.checkbuttonTarget.classList.toggle('fa-solid')
-      this.checkbuttonTarget.classList.toggle('fa-check')
-      this.checkbuttonTarget.classList.toggle('ticked-add-wishlist')
+
+      this.checkbuttonTarget.classList.toggle('d-none')
     }
   }
 
