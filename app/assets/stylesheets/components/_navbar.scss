@@ -20,36 +20,37 @@
     position: relative;
     display: inline-block;
   }
-  a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background-color: rgb(217, 176, 255);
-    border-radius: 4px;
-    scale: 0 1;
-    border: rgb(217, 176, 255);
-    transform-origin: center;
-    transition: scale 0.25s;
-  }
-  a:hover::before {
-    scale: 1;
-  }
-  // Icone Social
-
-  // i {
-    //   padding: 0px 10px 0px 10px;
-    //   --glow-color: rgb(217, 176, 255);
-    //   --glow-spread-color: rgba(191, 123, 255, 0.781);
-    //   --enhanced-glow-color: rgb(231, 206, 255);
-    //   text-shadow: 0 0 0.6em .25em var(--glow-color),
-    //     0 0 2.5em 2em var(--glow-spread-color),
-    //     inset 0 0 .5em .1em var(--glow-color);
-    // }
 }
 
+.underlined a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(217, 176, 255);
+  border-radius: 4px;
+  scale: 0 1;
+  border: rgb(217, 176, 255);
+  transform-origin: center;
+  transition: scale 0.25s;
+}
+.underlined a:hover::before {
+  scale: 1;
+}
+
+// Icone Social
+
+// i {
+  //   padding: 0px 10px 0px 10px;
+  //   --glow-color: rgb(217, 176, 255);
+  //   --glow-spread-color: rgba(191, 123, 255, 0.781);
+  //   --enhanced-glow-color: rgb(231, 206, 255);
+  //   text-shadow: 0 0 0.6em .25em var(--glow-color),
+  //     0 0 2.5em 2em var(--glow-spread-color),
+  //     inset 0 0 .5em .1em var(--glow-color);
+  // }
 
 
 .navbar-lewagon .navbar-collapse {
@@ -109,6 +110,7 @@
   line-height: 28px;
   align-items: center;
   position: relative;
+  margin-right: 10px;
 }
 
 .input6 {
@@ -145,5 +147,5 @@ input6:hover {
 .search-icon {
   position: absolute;
   color: grey;
-  margin-left: 5px
+  margin-left: 14px
 }

@@ -8,20 +8,47 @@
           <%= image_tag "http://res.cloudinary.com/dzdm1lpgi/image/upload/v1678288069/ekmjcphmr4fhw3vou4pn.png" %>
         <% end %>
 
-        <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link"%>
+        <li class="nav-item underlined">
+          <% if params[:action] == "home" %>
+            <%= link_to "Home", root_path, class: "nav-link activated", style:"font-weight: bold; --glow-color: rgb(217, 176, 255);
+                --glow-spread-color: rgba(191, 123, 255, 0.781);
+                --enhanced-glow-color: rgb(231, 206, 255);
+                color: var(--glow-color);
+                text-shadow: var(--glow-spread-color) 1px 0 10px;
+                border-bottom: solid 2px rgb(217, 176, 255)" %>
+          <% else %>
+            <%= link_to "Home", root_path, class: "nav-link"%>
+          <% end %>
         </li>
 
-        <li class="nav-item">
-          <%= link_to "My wishlist", wishlist_path, class: "nav-link" %>
+        <li class="nav-item underlined">
+          <% if params[:action] == "list" %>
+            <%= link_to "My wishlist", wishlist_path, class: "nav-link activated", style:"font-weight: bold; --glow-color: rgb(217, 176, 255);
+                --glow-spread-color: rgba(191, 123, 255, 0.781);
+                --enhanced-glow-color: rgb(231, 206, 255);
+                color: var(--glow-color);
+                text-shadow: var(--glow-spread-color) 1px 0 10px;
+                border-bottom: solid 2px rgb(217, 176, 255)" %>
+          <% else %>
+            <%= link_to "My wishlist", wishlist_path, class: "nav-link"%>
+          <% end %>
         </li>
 
           <%# <li class="nav-item active">
           <%= link_to "Social", social_path, class: "nav-link" %>
           <%# </li> %>
 
-        <li class="nav-item">
-         <%= link_to "My Sub", sub_path, class: "nav-link" %>
+        <li class="nav-item underlined">
+          <% if params[:action] == "sub" %>
+            <%= link_to "My sub", sub_path, class: "nav-link activated", style:"font-weight: bold; --glow-color: rgb(217, 176, 255);
+                --glow-spread-color: rgba(191, 123, 255, 0.781);
+                --enhanced-glow-color: rgb(231, 206, 255);
+                color: var(--glow-color);
+                text-shadow: var(--glow-spread-color) 1px 0 10px;
+                border-bottom: solid 2px rgb(217, 176, 255)" %>
+          <% else %>
+            <%= link_to "My sub", sub_path, class: "nav-link"%>
+          <% end %>
         </li>
 
       </ul>
