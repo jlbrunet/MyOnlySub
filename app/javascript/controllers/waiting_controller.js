@@ -16,6 +16,7 @@ export default class extends Controller {
 
     setTimeout(() => {
       form.submit()
+      this.waiterTarget.classList.add('d-none')
     }, 2800)
 
   }
