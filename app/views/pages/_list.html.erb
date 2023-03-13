@@ -32,6 +32,27 @@
     <% movies = @movies_aptv %>
     <% platform = "aptv" %>
     <%= render "carroussel", movies: movies, platform: platform %>
+
+    <% movies = @movies_comedy %>
+    <% genre = "Comedy" %>
+    <%= render "carroussel", movies: movies, platform: genre %>
+
+    <% movies = @movies_action %>
+    <% genre = "Action" %>
+    <%= render "carroussel", movies: movies, platform: genre %>
+
+    <% movies = @movies_horror %>
+    <% genre = "Horror" %>
+    <%= render "carroussel", movies: movies, platform: genre %>
+
+    <% movies = @movies_adventure%>
+    <% genre = "Adventure" %>
+    <%= render "carroussel", movies: movies, platform: genre %>
+
+    <% movies = @movies_fantasy %>
+    <% genre = "Fantasy" %>
+    <%= render "carroussel", movies: movies, platform: genre %>
+
   </div>
 
 <% end %>
