@@ -2,6 +2,19 @@ body {
   position: relative;
 }
 
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content:center;
+  align-items:center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
 .modal-backdrop {
   background: transparent;
 }
@@ -11,6 +24,7 @@ body {
 }
 
 .sub-modal {
+  @extend .modal;
   position: absolute;
   left: 32vw;
   position: relative;
