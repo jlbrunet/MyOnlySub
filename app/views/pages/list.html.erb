@@ -16,10 +16,11 @@
   </div>
 
   <div data-controller="sub-modal">
-    <br>
-    <p><i class="fa-solid fa-tv"></i>  Check the best recommended sub for you</p>
+    <div class="modal-opener">
+      <p><i class="fa-solid fa-tv"></i>  Check the best recommended sub for you</p>
 
-    <div class="wish-sub-btn btn-sub" data-action="click->sub-modal#display">Generate my sub</div>
+      <div class="wish-sub-btn btn-sub" data-action="click->sub-modal#display">Generate my sub</div>
+    </div>
 
     <div class="modal-container d-none" data-sub-modal-target="modal">
       <div class="modal-backdrop" data-action="click->sub-modal#close">

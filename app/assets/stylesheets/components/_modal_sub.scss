@@ -6,13 +6,17 @@ body {
   background: transparent;
 }
 
+.modal-opener {
+  text-align: center;
+}
+
 .modal {
   position: absolute;
   left: 32vw;
   position: relative;
   border-radius: 6px;
   width: 30vw;
-  height: 30vh;
+  height: 32vh;
   background-color: #242424;
   justify-content: center;
 
