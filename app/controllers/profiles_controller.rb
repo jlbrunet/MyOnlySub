@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   def update
     current_user.update(user_params)
     if current_user.save
-      redirect_to wishlist_path
+      redirect_to sub_path
     else
       render "/wishlist", status: :unprocessable_entity
     end
