@@ -134,14 +134,22 @@
 
 //JS : adding to the wishlist --> add a border, changing the button, and adding a tick
 
-.border-when-selected {
-  height: 287px;
-  width: 192px;
-  position: absolute;
-  z-index:1;
 
-  border: 3px solid $color1;
-  border-radius: 10px;
+.only-for-border {
+  position: relative;
+}
+
+.border-when-selected {
+  height: 295px;
+  width: 200px;
+  position: absolute;
+  top:-4px;
+  left:6px;
+
+  // z-index:1;
+
+  border: 4px solid $color1;
+  border-radius: 14px;
 
 }
 
