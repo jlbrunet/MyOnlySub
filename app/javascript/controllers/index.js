@@ -15,3 +15,6 @@ application.register("movie-modal", MovieModalController)
 
 import SearchMoviesController from "./search_movies_controller"
 application.register("search-movies", SearchMoviesController)
+
+import SubModalController from "./sub_modal_controller"
+application.register("sub-modal", SubModalController)
