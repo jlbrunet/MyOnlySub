@@ -7,6 +7,9 @@ import { application } from "./application"
 import AddButtonController from "./add_button_controller"
 application.register("add-button", AddButtonController)
 
+import AnimationController from "./animation_controller"
+application.register("animation", AnimationController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
