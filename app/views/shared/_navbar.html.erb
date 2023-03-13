@@ -5,7 +5,7 @@
       <ul class="navbar-nav me-auto">
 
         <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag "http://res.cloudinary.com/dzdm1lpgi/image/upload/v1678288069/ekmjcphmr4fhw3vou4pn.png" %>
+            <%= image_tag "http://res.cloudinary.com/dzdm1lpgi/image/upload/v1678706265/umix7mnldjdu8klw1jxr.png" %>
         <% end %>
 
         <li class="nav-item underlined">
@@ -48,6 +48,19 @@
                 border-bottom: solid 2px rgb(217, 176, 255)" %>
           <% else %>
             <%= link_to "My sub", sub_path, class: "nav-link"%>
+          <% end %>
+        </li>
+
+        <li class="nav-item underlined">
+          <% if params[:action] == "favorites" %>
+            <%= link_to "My favorites", favorites_path, class: "nav-link activated", style:"--glow-color: rgb(217, 176, 255);
+                --glow-spread-color: rgba(191, 123, 255, 0.781);
+                --enhanced-glow-color: rgb(231, 206, 255);
+                color: var(--glow-color);
+                text-shadow: var(--glow-spread-color) 1px 0 10px;
+                border-bottom: solid 2px rgb(217, 176, 255)" %>
+          <% else %>
+            <%= link_to "My favorites", favorites_path, class: "nav-link"%>
           <% end %>
         </li>
 
