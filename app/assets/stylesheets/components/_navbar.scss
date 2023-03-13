@@ -1,3 +1,15 @@
+.navbar-first {
+  flex: 0;
+}
+
+.navbar-second {
+  flex: 1;
+  margin-left: 20px;
+  :first-child {
+    margin-left: auto;
+  }
+}
+
 .navbar-lewagon {
   justify-content: space-between;
   background: #242424;
@@ -87,19 +99,16 @@
   }
 }
 
+.dropdown img{
+  opacity: 0.7;
+}
+
+.dropdown img:hover{
+  opacity: 1
+}
+
+
 //Searchbar
-
-.navbar-first {
-  flex: 0;
-}
-
-.navbar-second {
-  flex: 1;
-  margin-left: 10px;
-  :first-child {
-    margin-left: auto;
-  }
-}
 
 .nav-item-search {
   flex: 1;
