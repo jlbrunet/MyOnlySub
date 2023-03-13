@@ -16,8 +16,7 @@
 
     <h4>Series to watch on the platform:</h4>
     <div class="d-flex flex-row flex-wrap">
-      <% @bookmarks.each do |bookmark| %>
-        <% movie = Movie.find(bookmark.movie_id) %>
+      <% @movies_necessary.each do |movie| %>
         <% if movie[:category] == "series" && movie[:platform] == @platform_for_filter %>
             <%= render "cardmovie", movie: movie %>
         <% end %>
@@ -26,12 +25,28 @@
 
     <h4>Movies to watch on the platform:</h4>
       <div class="d-flex flex-row flex-wrap">
-        <% @bookmarks.each do |bookmark| %>
-          <% movie = Movie.find(bookmark.movie_id) %>
+        <% @movies_necessary.each do |movie| %>
           <% if movie[:category] == "movie" && movie[:platform] == @platform_for_filter %>
             <%= render "cardmovie", movie: movie %>
           <% end %>
         <% end %>
       </div>
 
+    <h4>Optional series to watch on the platform:</h4>
+    <div class="d-flex flex-row flex-wrap">
+      <% @movies_optional.each do |movie| %>
+        <% if movie[:category] == "series" && movie[:platform] == @platform_for_filter %>
+            <%= render "cardmovie", movie: movie %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <h4>Optional movies to watch on the platform:</h4>
+      <div class="d-flex flex-row flex-wrap">
+        <% @movies_optional.each do |movie| %>
+          <% if movie[:category] == "movie" && movie[:platform] == @platform_for_filter %>
+            <%= render "cardmovie", movie: movie %>
+          <% end %>
+        <% end %>
+      </div>
 </div>
