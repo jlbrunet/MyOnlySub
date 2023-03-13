@@ -1,25 +1,14 @@
 class PagesController < ApplicationController
-
   def home
     if params[:query].present?
       @results = Movie.search_by_title_and_synopsis(params[:query])
     else
       @results = false
       @movies = Movie.all.order("rating DESC")
-      @movies_amazon = @movies.where(platform: "Amazon Prime Video").select { |movie|
-        Bookmark.where(user:current_user).where(movie_id: movie.id) == [] }
-      @movies_netflix = @movies.where(platform: "Netflix").select { |movie|
-        Bookmark.where(user:current_user).where(movie_id: movie.id) == [] }
-      @movies_aptv = @movies.where(platform: "AppleTV+").select { |movie|
-        Bookmark.where(user:current_user).where(movie_id: movie.id) == [] }
-      @movies_disney = @movies.where(platform: "Disney+").select { |movie|
-        Bookmark.where(user:current_user).where(movie_id: movie.id) == [] }
-
-      # @movies_amazon = @movies.where(platform: "Amazon Prime Video")
-      # @movies_netflix = @movies.where(platform: "Netflix")
-      # @movies_aptv = @movies.where(platform: "AppleTV+")
-      # @movies_disney = @movies.where(platform: "Disney+")
-
+      @movies_amazon = @movies.where(platform: "Amazon Prime Video").select { |movie| condition(movie) }
+      @movies_netflix = @movies.where(platform: "Netflix").select { |movie| condition(movie) }
+      @movies_aptv = @movies.where(platform: "AppleTV+").select { |movie| condition(movie) }
+      @movies_disney = @movies.where(platform: "Disney+").select { |movie| condition(movie) }
     end
     respond_to do |format|
       format.text { render partial: "pages/list", locals: {movies: @results}, formats: [:html] }
@@ -154,9 +143,15 @@ class PagesController < ApplicationController
     end
   end
 
+  def condition(movie)
+    Bookmark.where(user: current_user).where(movie_id: movie.id) == [] || Bookmark.where(user: current_user).where(movie_id: movie.id).first[:ticked] == false
+  end
+
   def social
   end
 
   def validation
   end
+
+
 end
