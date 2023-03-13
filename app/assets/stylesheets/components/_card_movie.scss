@@ -63,9 +63,15 @@
 }
 
 // Card Movie Search Results
+.search-title {
+  margin-left:35px;
+  margin-top: 30px;
+  font-size: 30px;
+}
 
 .container-search {
   display: grid;
+  min-height: calc(100vh - 188px);
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 5px;
   margin-top: 20px

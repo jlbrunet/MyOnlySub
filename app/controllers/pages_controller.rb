@@ -9,6 +9,12 @@ class PagesController < ApplicationController
       @movies_netflix = @movies.where(platform: "Netflix").select { |movie| condition(movie) }
       @movies_aptv = @movies.where(platform: "AppleTV+").select { |movie| condition(movie) }
       @movies_disney = @movies.where(platform: "Disney+").select { |movie| condition(movie) }
+
+      @movies_comedy = @movies.where("genre ILIKE ?", "%comedy%").select { |movie| condition(movie) }.shuffle
+      @movies_action = @movies.where("genre ILIKE ?", "%action%").select { |movie| condition(movie) }.shuffle
+      @movies_adventure = @movies.where("genre ILIKE ?", "%adventure%").select { |movie| condition(movie) }.shuffle
+      @movies_horror = @movies.where("genre ILIKE ?", "%horror%").select { |movie| condition(movie) }.shuffle
+      @movies_fantasy = @movies.where("genre ILIKE ?", "%fantasy%").select { |movie| condition(movie) }.shuffle
     end
     respond_to do |format|
       format.text { render partial: "pages/list", locals: {movies: @results}, formats: [:html] }
@@ -31,10 +37,13 @@ class PagesController < ApplicationController
       netflix: { name: "Netflix", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 },
       amazon: { name: "Amazon Prime Video", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 },
       disney: { name: "Disney+", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 },
-      apple: { name: "Apple+", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 }
+      apple: { name: "AppleTV+", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 }
     }
     @user_time = current_user.availability * 60 * 1.5
     @duration = 0
+    @movies_necessary = []
+    @movies_total = []
+    @movies_optional = []
   end
 
   def sub_platform_declaration
@@ -46,12 +55,20 @@ class PagesController < ApplicationController
       @platforms.each do |_platform, data|
         if data.value?(platform_name)
           data[:minutes_wishlist] = sub_platform_minutes(bookmark, data[:name], data[:minutes_wishlist])
+          @movies_total.push(Movie.find(bookmark.movie_id))
           if @duration <= @user_time
             last_data_user = data[:minutes_user]
             data[:minutes_user] = sub_platform_minutes(bookmark, data[:name], data[:minutes_user])
+            @movies_necessary.push(Movie.find(bookmark.movie_id))
             @duration += data[:minutes_user] - last_data_user
           end
         end
+      end
+    end
+
+    @movies_total.each do |movie|
+      unless @movies_necessary.include?(movie)
+        @movies_optional.push(movie)
       end
     end
 

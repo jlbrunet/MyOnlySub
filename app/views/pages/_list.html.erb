@@ -1,7 +1,7 @@
 <div data-search-movies-target="list">
 
   <% if @results %>
-
+  <div class="search-title"><strong><%= @results.size %></strong> results for : <%= params[:query]%></div>
   <div class="container-search">
     <% @results.each do |movie| %>
 
@@ -14,6 +14,12 @@
     </div>
 
 <% else %>
+
+  <div class="banner" style="background-image: url(http://res.cloudinary.com/dzdm1lpgi/image/upload/v1678711673/deyyyh8kpln5lrn6tnqx.jpg);">
+    <div class="container">
+      <p><span style="font-size: 50px;" data-controller="typed-js"></span></p>
+    </div>
+  </div>
 
   <div class="mt-3">
 
@@ -32,6 +38,27 @@
     <% movies = @movies_aptv %>
     <% platform = "aptv" %>
     <%= render "carroussel", movies: movies, platform: platform %>
+
+    <% movies = @movies_comedy %>
+    <% genre = "Comedy" %>
+    <%= render "carroussel", movies: movies, platform: genre %>
+
+    <% movies = @movies_action %>
+    <% genre = "Action" %>
+    <%= render "carroussel", movies: movies, platform: genre %>
+
+    <% movies = @movies_horror %>
+    <% genre = "Horror" %>
+    <%= render "carroussel", movies: movies, platform: genre %>
+
+    <% movies = @movies_adventure%>
+    <% genre = "Adventure" %>
+    <%= render "carroussel", movies: movies, platform: genre %>
+
+    <% movies = @movies_fantasy %>
+    <% genre = "Fantasy" %>
+    <%= render "carroussel", movies: movies, platform: genre %>
+
   </div>
 
 <% end %>
