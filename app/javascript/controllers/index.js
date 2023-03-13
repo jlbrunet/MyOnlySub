@@ -21,3 +21,6 @@ application.register("sub-modal", SubModalController)
 
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
+
+import WaitingController from "./waiting_controller"
+application.register("waiting", WaitingController)
