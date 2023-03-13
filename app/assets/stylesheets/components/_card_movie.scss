@@ -30,7 +30,7 @@
     border-bottom-right-radius: 10px;
   }
 
-  .fa-solid {
+  .buttons-footer-card {
     opacity: 0;
   }
 }
@@ -43,7 +43,7 @@
     transition: 0.2s ease;
   }
 
-  .fa-solid {
+  .buttons-footer-card {
     opacity: 1;
     color: white;
     background-color: $color1;
@@ -52,7 +52,7 @@
     transition: 0.2s ease;
   }
 
-  .fa-solid:hover {
+  .buttons-footer-card:hover {
     color: white;
     background-color: $color2;
   }
@@ -98,7 +98,7 @@
     border-bottom-right-radius: 10px;
   }
 
-  .fa-solid {
+  .buttons-footer-card {
     opacity: 0;
   }
 }
@@ -111,7 +111,7 @@
     transition: 0.2s ease;
   }
 
-  .fa-solid {
+  .buttons-footer-card {
     opacity: 1;
     color: white;
     background-color: $color1;
@@ -120,8 +120,30 @@
     transition: 0.2s ease;
   }
 
-  .fa-solid:hover {
+  .buttons-footer-card:hover {
     color: white;
     background-color: $color2;
   }
+}
+
+//JS : adding to the wishlist --> add a border, changing the button, and adding a tick
+
+.border-add-wishlist img {
+  border: 3px solid $color1;
+  border-radius: 10px;
+}
+
+.card-movie {
+  position: relative;
+}
+
+.ticked-add-wishlist {
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  z-index: 1;
+  color: white;
+  background-color: $color1;
+  padding: 5px;
+  border-radius: 50%;
 }

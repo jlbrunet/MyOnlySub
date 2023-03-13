@@ -2,6 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="add-button"
 export default class extends Controller {
+  static targets = ["addlink", "checkbutton"]
+
   static values = {
     url1: String,
     url2: String,
@@ -12,8 +14,18 @@ export default class extends Controller {
   insert(event) {
     event.preventDefault()
     fetch(this.url1Value)
+    this.element.classList.toggle('border-add-wishlist')
+    this.addlinkTarget.classList.toggle('fa-plus')
+    this.addlinkTarget.classList.toggle('fa-trash')
+    this.checkbuttonTarget.classList.toggle('fa-solid')
+    this.checkbuttonTarget.classList.toggle('fa-check')
+    this.checkbuttonTarget.classList.toggle('ticked-add-wishlist')
+  }
+
+  exit(event) {
+    event.preventDefault()
+    fetch(this.url1Value)
     this.element.remove()
-    // this.element.innerHTML = "coucou" --> message pour indiquer que ajouté à la liste
   }
 
   seen(event) {
