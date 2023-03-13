@@ -1,0 +1,42 @@
+body {
+  position: relative;
+}
+
+.modal-backdrop {
+  background: transparent;
+}
+
+.modal {
+  position: absolute;
+  left: 32vw;
+  position: relative;
+  border-radius: 6px;
+  width: 30vw;
+  height: 30vh;
+  background-color: #242424;
+  justify-content: center;
+
+  p {
+    text-align: justify;
+  }
+
+  .icon-cross {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    color: grey;
+  }
+
+  .icon-cross:hover {
+    color: white;
+  }
+
+  #time-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+  }
+
+}
