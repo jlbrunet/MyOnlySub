@@ -41,7 +41,7 @@
 .card-movie:hover {
 
   .card-footer {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.8);
     width: 100%;
     transform: translateY(0);
     transition: 0.2s ease;
@@ -59,6 +59,19 @@
   .buttons-footer-card:hover {
     color: white;
     background-color: $color2;
+  }
+
+  .active {
+    background-color: white;
+    color: $color1;
+    font-weight: bold;
+    border: 1px solid #5e16a671;
+  }
+
+
+  .unactive {
+    background-color: rgba(128, 128, 128, 0.5);
+    color: rgba(255, 255, 255, 0.5)
   }
 }
 

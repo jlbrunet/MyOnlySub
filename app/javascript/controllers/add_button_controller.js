@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="add-button"
 export default class extends Controller {
-  static targets = ["addlink", "checkbutton", "removelink"]
+  static targets = ["addlink", "checkbutton", "removelink", "like", "unlike"]
 
   static values = {
     url1: String,
@@ -52,10 +52,35 @@ export default class extends Controller {
   liked(event) {
     event.preventDefault()
     fetch(this.url3Value)
+    // console.log(this.likeTarget)
+    if (this.likeTarget.classList.contains('active')) {
+      this.likeTarget.classList.remove('active')
+      this.unlikeTarget.classList.remove('unactive')
+    } else if (this.likeTarget.classList.contains('unactive')) {
+      this.likeTarget.classList.remove('unactive')
+      this.likeTarget.classList.add('active')
+      this.unlikeTarget.classList.remove('active')
+      this.unlikeTarget.classList.add('unactive')
+    } else {
+      this.likeTarget.classList.toggle('active')
+      this.unlikeTarget.classList.toggle('unactive')
+    }
   }
 
   unliked(event) {
     event.preventDefault()
     fetch(this.url4Value)
+    if (this.unlikeTarget.classList.contains('active')) {
+      this.unlikeTarget.classList.remove('active')
+      this.likeTarget.classList.remove('unactive')
+    } else if (this.unlikeTarget.classList.contains('unactive')) {
+      this.unlikeTarget.classList.remove('unactive')
+      this.unlikeTarget.classList.add('active')
+      this.likeTarget.classList.remove('active')
+      this.likeTarget.classList.add('unactive')
+    } else {
+      this.unlikeTarget.classList.toggle('active')
+      this.likeTarget.classList.toggle('unactive')
+    }
   }
 }
