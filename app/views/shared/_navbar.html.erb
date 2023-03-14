@@ -75,7 +75,7 @@
               <%= form_with url: root_path, method: :get, html: {class: "group6", data: {search_movies_target: "form"}} do |f| %>
                       <%= f.text_field :query,
                       class: "input6",
-                      placeholder: "Titles, actors, directors, categories",
+                      placeholder: "Titles, actors, directors, categories...",
                       value: params[:query],
                       data: {search_movies_target: "input",
                       action: "keyup->search-movies#update"} %>
