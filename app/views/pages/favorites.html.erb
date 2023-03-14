@@ -1,12 +1,23 @@
+<% sum = 0 %>
+<% @bookmarks.each do |bookmark| %>
+  <% if bookmark[:liked] != nil %>
+    <% sum += 1 %>
+  <% end %>
+<% end %>
+
 <div class="favorites-container">
-  <ul>
-    <% @bookmarks.each do |bookmark| %>
-      <li style="color: white;">
-        <% movie = bookmark.movie %>
-        <div data-remove-url5-value=<%= add_path(movie)%>>
-        <%= render "cardmovie", movie: movie %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+  <% if sum != 0 %>
+    <ul>
+      <% @bookmarks.each do |bookmark| %>
+        <li style="color: white;">
+          <% movie = bookmark.movie %>
+          <div data-remove-url5-value=<%= add_path(movie)%>>
+          <%= render "cardmovie", movie: movie %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <h3>Mark items as liked to see them here !</h3>
+  <% end %>
 </div>
