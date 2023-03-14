@@ -2,10 +2,10 @@
 <div data-controller="waiting">
   <div class="wrapper-wish">
     <div class="container-wish">
-      <ul data-controller="sortable" data-sortable-resource-name-value="priority">
+      <ul data-controller="sortable" data-sortable-resource-name-value="priority" >
         <% @bookmarks.each do |bookmark| %>
           <!-- <li data-sortable-update-url="/todos/1">Pet the cat</li> -->
-          <li style="color: white;" data-sortable-update-url="<%= priority_path(bookmark) %>">
+          <li style="color: white;" class="mouse" data-sortable-update-url="<%= priority_path(bookmark) %>">
             <% movie = bookmark.movie %>
               <%= render "pages/cardmovie", movie: movie %>
           </li>
