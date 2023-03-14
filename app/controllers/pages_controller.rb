@@ -165,6 +165,38 @@ class PagesController < ApplicationController
   end
 
   def social
+    @users = User.all
+    @bookmarks_cu = Bookmark.where(user: current_user)
+    @users.each do |user|
+      if Contact.where(first_user_id: user.id).where(second_user_id: current_user.id) == []
+        if Contact.where(first_user_id: current_user.id).where(second_user_id: user.id) == []
+          @contact = Contact.new(first_user_id: current_user.id, second_user_id: user.id, score: 0)
+        else
+          @contact = Contact.where(first_user_id: current_user.id).where(second_user_id: user.id).first
+        end
+      else
+        @contact = Contact.where(first_user_id: user.id).where(second_user_id: current_user.id).first
+      end
+      # utiliser @contact et le save à la fin
+      bookmarks_u = Bookmark.where(user_id: user.id)
+      sum = 0
+      bookmarks_u.each do |bookmark|
+        if @bookmarks_cu.where(movie_id: bookmark[:movie_id] ) != []
+          bookmark_cu = @bookmarks_cu.where(movie_id: bookmark[:movie_id]).first
+          if bookmark_cu[:ticked] == bookmark[:ticked] && (bookmark_cu[:ticked] == true || bookmark_cu[:ticked] == false)
+            sum += 5
+          elsif bookmark_cu[:ticked] != bookmark[:ticked] && bookmark_cu[:ticked] != nil && bookmark_cu[:ticked] != nil
+            sum -= 3
+          end
+        end
+      end
+
+      @contact.score = sum
+      @contact.save
+    end
+    @contact_double = Contact.where(first_user_id: current_user.id).where(second_user_id: current_user.id).first
+    @contact_double.score = -400
+    @contact_double.save
   end
 
   def validation
