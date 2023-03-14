@@ -183,9 +183,9 @@ class PagesController < ApplicationController
       bookmarks_u.each do |bookmark|
         if @bookmarks_cu.where(movie_id: bookmark[:movie_id] ) != []
           bookmark_cu = @bookmarks_cu.where(movie_id: bookmark[:movie_id]).first
-          if bookmark_cu[:ticked] == bookmark[:ticked] && (bookmark_cu[:ticked] == true || bookmark_cu[:ticked] == false)
+          if bookmark_cu[:liked] == bookmark[:liked] && (bookmark_cu[:liked] == true || bookmark_cu[:liked] == false)
             sum += 5
-          elsif bookmark_cu[:ticked] != bookmark[:ticked] && bookmark_cu[:ticked] != nil && bookmark_cu[:ticked] != nil
+          elsif bookmark_cu[:liked] != bookmark[:liked] && bookmark_cu[:liked] != nil && bookmark_cu[:liked] != nil
             sum -= 3
           end
         end
@@ -197,6 +197,12 @@ class PagesController < ApplicationController
     @contact_double = Contact.where(first_user_id: current_user.id).where(second_user_id: current_user.id).first
     @contact_double.score = -400
     @contact_double.save
+
+    my_users = {}
+    (Contact.where(first_user_id: current_user.id) + Contact.where(second_user_id: current_user.id)).each do |x|
+      my_users[x.id.to_s] = x.score
+    end
+    @results = my_users.sort { |a, b| a[1] <=> b[1] }.reverse.first(3)
   end
 
   def validation

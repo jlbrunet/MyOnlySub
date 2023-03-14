@@ -1,3 +1,26 @@
 <h1>Coucou</h1>
 
+<% @results.each do |result|
+  if Contact.find(result[0].to_i).first_user_id == current_user.id
+    user_id = Contact.find(result[0].to_i).second_user_id
+  else
+    user_id = Contact.find(result[0].to_i).first_user_id
+  end
+  user = User.find(user_id)
+  bookmarks_u = user.bookmarks %>
 
+  <div class="social-card">
+    <div>
+      <%= cl_image_tag user.photo.key, height: 40, width: 40 %>
+      <div> <%= user.first_name%></div>
+      <div><%= result[1]%></div>
+    </div>
+      <% bookmarks_u.each do |bookmark|%>
+        <%= image_tag(Movie.find(bookmark.movie_id).picture_url, height: 258, width: 172, crop: :fill) %>
+      <% end %>
+    <div>
+
+    </div>
+  </div>
+
+<% end %>
