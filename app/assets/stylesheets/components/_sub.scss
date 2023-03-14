@@ -1,3 +1,55 @@
-.container-sub{
-  height: 80vh;
+.suggestion {
+  padding-top: 60px;
+  padding-bottom: 100px;
+
+  .image {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 20px;
+    --glow-color: rgb(162, 118, 203);
+    --glow-color-light: rgba(162, 118, 203, 0.5);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    border: 0.1em solid var(--glow-color);
+    box-shadow: 0 0 1em 0.1em var(--glow-color), 0 0 2em 0.3em var(--glow-spread-color), inset 0 0 0.75em 0.1em var(--glow-color);
+    border-radius: 1.5em;
+    background-color: var(--btn-color);
+    z-index:1;
+  }
+
+  h4 {
+    margin: 0px 0px 40px 0px;
+  }
+
+  .divbutton {
+    position: relative;
+  }
+  
+  .button {
+    border-radius: 50%;
+    font-weight: lighter;
+    color: white;
+    background-color:rgba(191, 123, 255, 0.9);
+    padding: 0px 10px;
+    z-index:1;
+    margin: 0px;
+    position: absolute;
+    top: -4px;
+    right: -3px;
+    border: none;
+    transform: scale(1.1);
+  }
+
+  .informations {
+    font-size: 15px;
+    padding: 10px 30px;
+    margin-left: 50px;
+    --glow-color: rgb(162, 118, 203);
+    border: 0.1em solid var(--glow-color);
+    border-radius: 1.5em;
+  }
+
+  ul {
+    margin: 0px;
+    padding-left: 10px;
+  }
 }

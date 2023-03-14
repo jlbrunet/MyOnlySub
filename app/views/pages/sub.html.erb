@@ -1,54 +1,67 @@
-<div class="container-sub">
-
-  <h1 class="mt-3 mb-3">My sub</h1>
-
-  <div class="d-flex flex-row align-items-center">
-    <h4 class="me-3">We suggest you to subscribe for the next month to :</h4>
-    <%= image_tag("#{@platform_for_logo}.png", width:150, crop: :fill)%>
+<div class="container" data-controller="animation" >
+  <div class="suggestion">
+    <h4 class="d-flex justify-content-center">Suggestion for the next month:</h4>
+    <div class="d-flex justify-content-center">
+     <div class="divbutton">
+        <button class="image" data-action="click->animation#display" data-animation-target="platform">
+          <%= image_tag("#{@platform_for_logo}.png", width:200, crop: :fill)%>
+        </button>
+        <button class="button d-none" data-animation-target="ibutton" data-action="click->animation#i">i</button>
+      </div>
+      <div class = "informations d-none" data-animation-target="info">
+        <%= render "platforms", platform: @final_answer %>
+      </div>
+    </div>
   </div>
 
-    <p>Description of the platform : </p>
-    <ul class="d-flex flex-column">
-      <li>Price of the sub</li>
-      <li>Welcoming offer</li>
-      <li>Number of screen</li>
-    </ul>
-
-    <h4>Series to watch on the platform:</h4>
-    <div class="d-flex flex-row flex-wrap">
-      <% @movies_necessary.each do |movie| %>
-        <% if movie[:category] == "series" && movie[:platform] == @platform_for_filter %>
-            <%= render "cardmovie", movie: movie %>
-        <% end %>
-      <% end %>
-    </div>
-
-    <h4>Movies to watch on the platform:</h4>
-      <div class="d-flex flex-row flex-wrap">
-        <% @movies_necessary.each do |movie| %>
-          <% if movie[:category] == "movie" && movie[:platform] == @platform_for_filter %>
-            <%= render "cardmovie", movie: movie %>
+  <div class="d-none" data-animation-target="moviesseries">
+    <div class="d-flex">
+      <div>
+        <h4>Series to watch on <%= @final_answer.capitalize %> during the month:</h4>
+        <div class="d-flex flex-row flex-wrap">
+          <% @movies_necessary.each do |movie| %>
+            <% if movie[:category] == "series" && movie[:platform] == @platform_for_filter %>
+                <%= render "cardmovie", movie: movie %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
 
-    <h4>Optional series to watch on the platform:</h4>
-    <div class="d-flex flex-row flex-wrap">
-      <% @movies_optional.each do |movie| %>
-        <% if movie[:category] == "series" && movie[:platform] == @platform_for_filter %>
-            <%= render "cardmovie", movie: movie %>
-        <% end %>
-      <% end %>
+
+      <div>
+        <h4>Movies to watch on <%= @final_answer.capitalize %> during the month:</h4>
+        <div class="d-flex flex-row flex-wrap">
+          <% @movies_necessary.each do |movie| %>
+            <% if movie[:category] == "movie" && movie[:platform] == @platform_for_filter %>
+              <%= render "cardmovie", movie: movie %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
 
-    <h4>Optional movies to watch on the platform:</h4>
-      <div class="d-flex flex-row flex-wrap">
-        <% @movies_optional.each do |movie| %>
-          <% if movie[:category] == "movie" && movie[:platform] == @platform_for_filter %>
-            <%= render "cardmovie", movie: movie %>
+    <div class="d-flex">
+      <div>
+        <h4>Series to watch on <%= @final_answer.capitalize %> if you have even more time:</h4>
+        <div class="d-flex flex-row flex-wrap">
+          <% @movies_optional.each do |movie| %>
+            <% if movie[:category] == "series" && movie[:platform] == @platform_for_filter %>
+                <%= render "cardmovie", movie: movie %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
+
+      <div>
+        <h4>Movies to watch on <%= @final_answer.capitalize %> if you have even more time:</h4>
+        <div class="d-flex flex-row flex-wrap">
+          <% @movies_optional.each do |movie| %>
+            <% if movie[:category] == "movie" && movie[:platform] == @platform_for_filter %>
+              <%= render "cardmovie", movie: movie %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
