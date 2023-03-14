@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="add-button"
 export default class extends Controller {
-  static targets = ["addlink", "checkbutton", "removelink"]
+  static targets = ["addlink", "checkbutton", "removelink", "like", "unlike"]
 
   static values = {
     url1: String,
@@ -52,10 +52,15 @@ export default class extends Controller {
   liked(event) {
     event.preventDefault()
     fetch(this.url3Value)
+    console.log(this.likeTarget)
+    this.likeTarget.classList.add('active')
+    this.unlikeTarget.classList.add('unactive')
   }
 
   unliked(event) {
     event.preventDefault()
     fetch(this.url4Value)
+    this.unlikeTarget.classList.add('active')
+    this.likeTarget.classList.add('unactive')
   }
 }

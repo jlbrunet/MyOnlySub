@@ -60,6 +60,23 @@
     color: white;
     background-color: $color2;
   }
+
+  .active {
+    background-color: $color2;
+
+    :hover {
+      background-color: $color2 !important;
+    }
+  }
+
+
+  .unactive {
+    background-color: grey;
+
+    :hover {
+      background-color: grey !important;
+    }
+  }
 }
 
 // Card Movie Search Results
