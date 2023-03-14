@@ -4,7 +4,9 @@ class ProfilesController < ApplicationController
     if current_user.save
       redirect_to sub_path
     else
-      render "/wishlist", status: :unprocessable_entity
+      @user = current_user
+      @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
+      render "pages/list", status: :unprocessable_entity
     end
   end
 
