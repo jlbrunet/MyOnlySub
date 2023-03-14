@@ -1,0 +1,36 @@
+<h1>Coucou</h1>
+
+<% @results.each do |result|
+  if Contact.find(result[0].to_i).first_user_id == current_user.id
+    user_id = Contact.find(result[0].to_i).second_user_id
+  else
+    user_id = Contact.find(result[0].to_i).first_user_id
+  end
+  user = User.find(user_id)
+  bookmarks_u_ticked = user.bookmarks.where(ticked: true)
+  bookmarks_u_liked = user.bookmarks.where(liked: true) %>
+
+  <div class="social-card">
+    <div>
+      <%= cl_image_tag user.photo.key, height: 70, width: 70 %>
+      <div> <%= user.first_name%></div>
+      <div><%= result[1]%></div>
+    </div>
+
+    <div class="d-flex flex-row">
+      <% bookmarks_u_ticked.each do |bookmark|
+        movie = Movie.find(bookmark.movie_id) %>
+        <%= render "pages/cardmovie", movie: movie %>
+      <% end %>
+    </div>
+    <div class="d-flex flex-row">
+      <% bookmarks_u_liked.each do |bookmark|
+        if bookmarks_u_ticked.exclude?(bookmark)
+          movie = Movie.find(bookmark.movie_id) %>
+          <%= render "pages/cardmovie", movie: movie %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+<% end %>
