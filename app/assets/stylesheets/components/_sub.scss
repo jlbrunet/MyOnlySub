@@ -1,3 +1,8 @@
+.container-sub-page {
+  width: 1250px;
+  margin: 0 auto;
+}
+
 .suggestion {
   padding-top: 60px;
   padding-bottom: 100px;
@@ -23,7 +28,7 @@
   .divbutton {
     position: relative;
   }
-  
+
   .button {
     border-radius: 50%;
     font-weight: lighter;
@@ -42,14 +47,80 @@
   .informations {
     font-size: 15px;
     padding: 10px 30px;
-    margin-left: 50px;
     --glow-color: rgb(162, 118, 203);
     border: 0.1em solid var(--glow-color);
-    border-radius: 1.5em;
+    border-radius: 0px 10px 10px 10px;
   }
 
   ul {
     margin: 0px;
     padding-left: 10px;
   }
+
+  .container-infos {
+    position: relative;
+  }
+
+  .modal-infos {
+    position: absolute;
+    top: 5px;
+    right: 200px;
+  }
 }
+
+  .title {
+      width: 546px;
+      padding-left: 30px;
+      padding-top: 30px;
+      font-size: 20px;
+  }
+
+  .series-title {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 30px;
+    color: $color2;
+  }
+
+  .background-series {
+    width: 600px;
+    --glow-color: rgb(162, 118, 203);
+    --glow-color-light: rgba(162, 118, 203, 0.5);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    border: 0.1em solid var(--glow-color);
+    box-shadow: 0 0.1em 0.1em var(--glow-color), 0 0 0.1em 0.1em var(--glow-spread-color), inset 0 0 0.9em 0.1em var(--glow-color);
+    border-radius: 20px;
+  }
+
+  .movies-title {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 30px;
+    color: $color2;
+  }
+
+  .background-movies {
+    width: 600px;
+    --glow-color: rgb(162, 118, 203);
+    --glow-color-light: rgba(162, 118, 203, 0.5);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    border: 0.1em solid var(--glow-color);
+    box-shadow: 0 0.1em 0.1em var(--glow-color), 0 0 0.1em 0.1em var(--glow-spread-color), inset 0 0 0.9em 0.1em var(--glow-color);
+    border-radius: 20px;
+  }
+
+  .a {
+    width: 546px;
+    padding-bottom: 30px;
+  }
+
+  .nomovie {
+    width: 546px;
+    padding-left: 30px;
+    padding-top: 30px;
+    font-size: 20px;
+  }
