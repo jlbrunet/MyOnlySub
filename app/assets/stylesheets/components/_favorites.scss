@@ -1,12 +1,17 @@
 .favorites-container {
-  width: 90%;
+  display: flex;
   min-height: calc(100vh - 194px);
   margin-top: 2rem;
-  margin-left: 5%;
 }
 
-ul {
+.favorites-container ul {
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.favorites-container li {
+  margin: 10px;
+  list-style: none;
 }

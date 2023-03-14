@@ -72,6 +72,35 @@ class PagesController < ApplicationController
       end
     end
 
+    @movies_optional_series = []
+    @movies_necessary_series = []
+    @movies_optional_movies = []
+    @movies_necessary_movies = []
+
+    @movies_optional.each do |movie|
+      if movie.category == "series"
+        @movies_optional_series.push(movie)
+      end
+    end
+
+    @movies_optional.each do |movie|
+      if movie.category == "movie"
+        @movies_optional_movies.push(movie)
+      end
+    end
+
+    @movies_necessary.each do |movie|
+      if movie.category == "movie"
+        @movies_necessary_movies.push(movie)
+      end
+    end
+
+    @movies_necessary.each do |movie|
+      if movie.category == "series"
+        @movies_necessary_series.push(movie)
+      end
+    end
+
     bookmarks.each_with_index do |bookmark, index|
       platform_name = bookmark.movie.platform
       @platforms.each do |_platform, data|
