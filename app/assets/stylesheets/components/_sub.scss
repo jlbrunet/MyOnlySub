@@ -1,5 +1,5 @@
 .container-sub-page {
-  width: 1350px;
+  width: 1250px;
   margin: 0 auto;
 }
 
@@ -46,8 +46,7 @@
 
   .informations {
     font-size: 15px;
-    padding: 15px 30px;
-    margin-left: 50px;
+    padding: 10px 30px;
     --glow-color: rgb(162, 118, 203);
     border: 0.1em solid var(--glow-color);
     border-radius: 0px 10px 10px 10px;
@@ -64,15 +63,64 @@
 
   .modal-infos {
     position: absolute;
-    top: 10px;
-    right: 170px;
+    top: 5px;
+    right: 200px;
   }
 }
 
-.usertime-container {
-  width: 800px;
-}
+  .title {
+      width: 546px;
+      padding-left: 30px;
+      padding-top: 30px;
+      font-size: 20px;
+  }
 
-.optional-container {
-  width: 400px;
-}
+  .series-title {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 30px;
+    color: $color2;
+  }
+
+  .background-series {
+    width: 600px;
+    --glow-color: rgb(162, 118, 203);
+    --glow-color-light: rgba(162, 118, 203, 0.5);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    border: 0.1em solid var(--glow-color);
+    box-shadow: 0 0.1em 0.1em var(--glow-color), 0 0 0.1em 0.1em var(--glow-spread-color), inset 0 0 0.9em 0.1em var(--glow-color);
+    border-radius: 20px;
+  }
+
+  .movies-title {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 30px;
+    color: $color2;
+  }
+
+  .background-movies {
+    width: 600px;
+    --glow-color: rgb(162, 118, 203);
+    --glow-color-light: rgba(162, 118, 203, 0.5);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    border: 0.1em solid var(--glow-color);
+    box-shadow: 0 0.1em 0.1em var(--glow-color), 0 0 0.1em 0.1em var(--glow-spread-color), inset 0 0 0.9em 0.1em var(--glow-color);
+    border-radius: 20px;
+  }
+
+  .a {
+    width: 546px;
+    padding-bottom: 30px;
+  }
+
+  .nomovie {
+    width: 546px;
+    padding-left: 30px;
+    padding-top: 30px;
+    font-size: 20px;
+  }

@@ -6,12 +6,12 @@ export default class extends Controller {
   static targets = ["platform", "info", "moviesseries", "ibutton"]
 
   connect() {
-    a = setInterval(() => this.animation(), 2000)
+    a = setInterval(() => this.animation(), 1000)
   }
 
   animation() {
     this.platformTarget.animate([
-      {transform: 'scale(0.4)' },
+      {transform: 'scale(0.3)' },
      ], {
       duration: 1000,
     })

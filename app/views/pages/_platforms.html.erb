@@ -1,23 +1,23 @@
-<% if @final_answer = "netflix" %>
+<% if platform == "netflix" %>
   <ul class="d-flex flex-column">
     <li><strong>Price of sub:</strong> 8,99€/month</li>
     <li><strong>Engagement:</strong> no</li>
     <li><strong>Number of screens:</strong> 1</li>
   </ul>
-<% elsif @final_answer = "amazon" %>
+<% elsif platform == "amazon" %>
   <ul class="d-flex flex-column">
     <li><strong>Price of sub:</strong> 6,99€/month</li>
     <li><strong>Engagement:</strong> no</li>
     <li><strong>Welcome offer:</strong> 30 days free</li>
     <li><strong>Number of screens:</strong> 3</li>
   </ul>
-<% elsif @final_answer = "disney" %>
+<% elsif platform == "disney" %>
   <ul class="d-flex flex-column">
     <li><strong>Price of sub:</strong> 8,99€/month</li>
     <li><strong>Engagement:</strong> no</li>
     <li><strong>Number of screens:</strong> 4</li>
   </ul>
-<% elsif @final_answer = "apple" %>
+<% elsif platform == "apple" %>
   <ul class="d-flex flex-column">
     <li><strong>Price of sub:</strong> 6,99€/month</li>
     <li><strong>Engagement:</strong> no</li>
