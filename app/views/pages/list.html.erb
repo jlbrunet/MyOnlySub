@@ -7,7 +7,7 @@
           <!-- <li data-sortable-update-url="/todos/1">Pet the cat</li> -->
           <li style="color: white;" data-sortable-update-url="<%= priority_path(bookmark) %>">
             <% movie = bookmark.movie %>
-              <%= render "cardmovie", movie: movie %>
+              <%= render "pages/cardmovie", movie: movie %>
           </li>
         <% end %>
       </ul>
@@ -29,15 +29,14 @@
           <br>
           <div id="time-modal">
             <p><i class="fa-sharp fa-solid fa-clock"></i> How many hours are you available during the following month ?</p>
-            <%= simple_form_for(@user, url: profile_update_path(@user), html: { class: "my-form" }) do |f| %>
+            <%= simple_form_for(@user, url: profile_update_path(@user), html: { class: "my-form", novalidate: false, data: { action:  "submit->waiting#waiting" } }) do |f| %>
               <%= f.input :availability,
               label: false,
               placeholder: "How many hours ?",
-              input_html: { class: 'input-login-sub' }
+              input_html: { class: 'input-login-sub', min: '1', data: { waiting_target: "number" } }
               %>
               <%= f.submit "Validate my availability",
-                :class => "btn-sub2",
-                data: { action:  "click->waiting#waiting" }
+                :class => "btn-sub2"
               %>
             <% end %>
           </div>
@@ -47,6 +46,6 @@
 
   </div>
   <div class="d-none" data-waiting-target="waiter">
-    <%= render "waiting" %>
+    <%= render "pages/waiting" %>
   </div>
 </div>
