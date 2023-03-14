@@ -2,7 +2,6 @@
 
 .container-login {
   background-size: cover;
-  background-position: center;
   padding: 100px;
   min-height: calc(100vh - 166px);
 }
@@ -21,6 +20,7 @@
 
 .login-sign-up .form-text{
   color:white;
+  font-weight: bold;
 }
 
 // Login title page
@@ -48,14 +48,14 @@
   background-color: white;
   height: 45px;
   opacity: 0.7;
-  color: white;
+  color: black;
 }
 
 .input-login:focus {
   box-shadow: none;
+  color: black;
   background-color: white;
   border:none;
-  opacity: 0.9;
 }
 
 .input-login::-moz-placeholder {
@@ -69,13 +69,14 @@
 
 .input-login-edit {
   border-radius: 30px;
+  color:black;
   background-color: white;
   height: 45px;
   opacity: 0.7;
 }
 
 .input-login-edit .form-text{
-  color:black
+  color:white;
 }
 
 .input-login-edit:focus {
@@ -83,7 +84,7 @@
   background-color: white;
   border:none;
   opacity: 0.9;
-  color:grey
+  color:black
 }
 
 .input-login-edit::-moz-placeholder {
