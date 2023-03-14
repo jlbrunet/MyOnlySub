@@ -21,25 +21,69 @@ body {
 
 .movie-modal {
   @extend .modal;
+  display: flex;
+  flex-direction: row;
   position: absolute;
   position: relative;
   border-radius: 6px;
   width: 70vw;
-  height: 50vh;
-  background-color: #242424;
+  height: 287px;
+  background-color: black;
 
-  img {
-    height: 100%;
-    width: auto;
-  }
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 
-  p {
-    text-align: justify;
-  }
+    img {
+      height: 100%;
+      width: auto;
+    }
 
-  .platform img {
-    height: 80px;
-    margin-left: 50px;
+    .midle-part {
+      display: flex;
+      flex-direction: column;
+      width: 55%;
+
+      p {
+        text-align: justify;
+      }
+
+      .top {
+        margin-bottom: 25px;
+      }
+
+      .fa-star {
+        color: rgb(217, 176, 255);
+      }
+
+      .fa-star-half-stroke {
+        color: rgb(217, 176, 255);
+      }
+    }
+
+    .right-part {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+
+      .platform {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .platform img {
+        height: 60px;
+      }
+
+      .info {
+        color: rgb(185, 185, 185);
+      }
+    }
   }
 
   .icon-cross {
@@ -52,9 +96,5 @@ body {
 
   .icon-cross:hover {
     color: white;
-  }
-
-  .info {
-    color: rgb(185, 185, 185);
   }
 }
