@@ -1,6 +1,10 @@
 .container-sub-page {
-  width: 1250px;
-  margin: 0 auto;
+  min-height: calc(100vh - 168px);
+}
+
+.sub-page{
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 .suggestion {
@@ -62,11 +66,13 @@
   }
 
   .modal-infos {
-    position: absolute;
-    top: 5px;
-    right: 200px;
-  }
-}
+      position: absolute;
+      width:360px;
+      top: 12px;
+      right: 120px;
+    }
+ }
+
 
   .title {
       width: 546px;
@@ -85,6 +91,7 @@
   }
 
   .background-series {
+    text-align: center;
     width: 600px;
     --glow-color: rgb(162, 118, 203);
     --glow-color-light: rgba(162, 118, 203, 0.5);
@@ -104,6 +111,7 @@
   }
 
   .background-movies {
+    text-align: center;
     width: 600px;
     --glow-color: rgb(162, 118, 203);
     --glow-color-light: rgba(162, 118, 203, 0.5);
@@ -119,8 +127,6 @@
   }
 
   .nomovie {
-    width: 546px;
-    padding-left: 30px;
-    padding-top: 30px;
+    padding-top: 20px;
     font-size: 20px;
   }

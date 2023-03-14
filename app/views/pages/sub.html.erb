@@ -1,6 +1,7 @@
 <div class="container-sub-page" data-controller="animation info-modal" >
+
   <div class="suggestion">
-    <h4 class="d-flex justify-content-center">Suggestion for the next month:</h4>
+    <h4 class="d-flex justify-content-center">Suggestion for the next month :</h4>
     <div class="d-flex justify-content-center container-infos">
      <div class="divbutton">
         <button class="image" data-action="click->animation#display" data-animation-target="platform">
@@ -14,7 +15,7 @@
     </div>
   </div>
 
-  <div class="d-none d-flex flex-row justify-content-between" data-animation-target="moviesseries">
+  <div class="sub-page d-none d-flex flex-row justify-content-between" data-animation-target="moviesseries">
     <div class="background-series">
 
       <% if @movies_necessary_series == [] %>
@@ -86,3 +87,5 @@
 
     </div>
   </div>
+
+</div>
