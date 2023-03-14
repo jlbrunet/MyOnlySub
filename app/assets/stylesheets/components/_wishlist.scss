@@ -1,41 +1,29 @@
-ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-li {
-  list-style: none;
-}
-
 h3 {
   margin-left: 2rem;
   margin-top: 2rem;
 }
 
-// Container
+//Wishlist
 
 .wrapper-wish {
   display: flex;
-  margin-top:30px
+  margin-top: 30px;
+  min-height: calc(100vh - 263px);
 }
-
-//Wishlist
 
 .container-wish {
   width: 70%;
-  height: 71vh;
 }
-
-ul {
+.container-wish ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-li {
+.container-wish li {
   list-style: none;
 }
+
 
 //Side sub
 
