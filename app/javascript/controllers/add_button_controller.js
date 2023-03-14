@@ -52,15 +52,35 @@ export default class extends Controller {
   liked(event) {
     event.preventDefault()
     fetch(this.url3Value)
-    console.log(this.likeTarget)
-    this.likeTarget.classList.add('active')
-    this.unlikeTarget.classList.add('unactive')
+    // console.log(this.likeTarget)
+    if (this.likeTarget.classList.contains('active')) {
+      this.likeTarget.classList.remove('active')
+      this.unlikeTarget.classList.remove('unactive')
+    } else if (this.likeTarget.classList.contains('unactive')) {
+      this.likeTarget.classList.remove('unactive')
+      this.likeTarget.classList.add('active')
+      this.unlikeTarget.classList.remove('active')
+      this.unlikeTarget.classList.add('unactive')
+    } else {
+      this.likeTarget.classList.toggle('active')
+      this.unlikeTarget.classList.toggle('unactive')
+    }
   }
 
   unliked(event) {
     event.preventDefault()
     fetch(this.url4Value)
-    this.unlikeTarget.classList.add('active')
-    this.likeTarget.classList.add('unactive')
+    if (this.unlikeTarget.classList.contains('active')) {
+      this.unlikeTarget.classList.remove('active')
+      this.likeTarget.classList.remove('unactive')
+    } else if (this.unlikeTarget.classList.contains('unactive')) {
+      this.unlikeTarget.classList.remove('unactive')
+      this.unlikeTarget.classList.add('active')
+      this.likeTarget.classList.remove('active')
+      this.likeTarget.classList.add('unactive')
+    } else {
+      this.unlikeTarget.classList.toggle('active')
+      this.likeTarget.classList.toggle('unactive')
+    }
   }
 }
