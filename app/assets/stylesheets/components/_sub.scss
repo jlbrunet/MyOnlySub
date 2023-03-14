@@ -1,3 +1,8 @@
+.container-sub-page {
+  width: 1350px;
+  margin: 0 auto;
+}
+
 .suggestion {
   padding-top: 60px;
   padding-bottom: 100px;
@@ -62,12 +67,12 @@
     top: 10px;
     right: 170px;
   }
+}
 
-  .usertime-container {
-    width: 1000px;
-    flex-grow: 2;
-  }
-  .usertime-cards {
-    width: 1000px;
-  }
+.usertime-container {
+  width: 800px;
+}
+
+.optional-container {
+  width: 400px;
 }

@@ -1,4 +1,4 @@
-<div class="container" data-controller="animation info-modal" >
+<div class="container-sub-page" data-controller="animation info-modal" >
   <div class="suggestion">
     <h4 class="d-flex justify-content-center">Suggestion for the next month:</h4>
     <div class="d-flex justify-content-center container-infos">
@@ -17,7 +17,7 @@
   <div class="d-none" data-animation-target="moviesseries">
     <div class="d-flex">
       <div class="usertime-container">
-        <h4>Series to watch during the month:</h4>
+        <h4><strong>Series</strong> to watch during the month:</h4>
         <div class="d-flex flex-row flex-wrap usertime-cards">
           <% @movies_necessary.each do |movie| %>
             <% if movie[:category] == "series" && movie[:platform] == @platform_for_filter %>
@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="optional-container">
         <h4>If you have more time:</h4>
         <div class="d-flex flex-row flex-wrap">
           <% @movies_optional.each do |movie| %>
@@ -42,7 +42,7 @@
 
     <div class="d-flex">
       <div class="usertime-container">
-        <h4>Movies to watch during the month:</h4>
+        <h4><strong>Movies</strong> to watch during the month:</h4>
         <div class="d-flex flex-row flex-wrap usertime-cards">
           <% @movies_necessary.each do |movie| %>
             <% if movie[:category] == "movie" && movie[:platform] == @platform_for_filter %>
@@ -52,8 +52,8 @@
         </div>
       </div>
 
-      <div>
-        <h4>If you have even more time:</h4>
+      <div class="optional-container">
+        <h4>If you have more time:</h4>
         <div class="d-flex flex-row flex-wrap">
           <% @movies_optional.each do |movie| %>
             <% if movie[:category] == "movie" && movie[:platform] == @platform_for_filter %>
