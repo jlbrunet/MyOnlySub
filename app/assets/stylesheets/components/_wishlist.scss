@@ -1,14 +1,38 @@
-h3 {
-  margin-left: 2rem;
-  margin-top: 2rem;
+.titled {
+  position: sticky;
+  top: 68px;
+  z-index: 1000;
+  background-color: black;
+  height: 80px;
+  padding: 20px;
+
+  h3 {
+    margin-left: 30px;
+    margin-bottom: 0px;
+  }
+
 }
 
+.void {
+  position: sticky;
+  top: 68px;
+  z-index: 1000;
+  background-color: transparent;
+  height: 80px;
+  padding: 20px;
+
+  h3 {
+    margin-left: 30px;
+    margin-bottom: 0px;
+  }
+
+}
 //Wishlist
 
 .wrapper-wish {
   display: flex;
   margin-top: 30px;
-  min-height: calc(100vh - 198px);
+  min-height: calc(100vh - 277px);
 }
 
 .container-wish {

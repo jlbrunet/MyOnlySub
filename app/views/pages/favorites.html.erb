@@ -5,8 +5,15 @@
   <% end %>
 <% end %>
 
-<div class="favorites-container">
-  <% if sum != 0 %>
+<% if sum == 0 %>
+  <div class="titled">
+    <h3>Mark items as liked to see them here !</h3>
+  </div>
+<% end %>
+   <div class="void">
+    <h3></h3>
+  </div>
+  <div class="favorites-container">
     <ul>
       <% @bookmarks.each do |bookmark| %>
         <li style="color: white;">
@@ -17,7 +24,4 @@
         </li>
       <% end %>
     </ul>
-  <% else %>
-    <h3>Mark items as liked to see them here !</h3>
-  <% end %>
-</div>
+  </div>

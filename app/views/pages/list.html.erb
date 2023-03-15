@@ -5,10 +5,22 @@
   <% end %>
 <% end %>
 
+
+      <% if sum != 0 %>
+      <div class="titled">
+        <h3>Sort your items by priority</h3>
+      </div>
+      <% else %>
+        <div class="titled">
+          <h3>Add items to your wishlist</h3>
+        </div>
+        <div class="wrapper-wish">
+        </div>
+      <% end %>
+
+<% if sum != 0 %>
   <div data-controller="waiting">
       <div class="wrapper-wish">
-    <% if sum != 0 %>
-      <h3>Sort your items by priority</h3>
         <div class="container-wish">
           <ul data-controller="sortable" data-sortable-resource-name-value="priority" >
             <% @bookmarks.each do |bookmark| %>
@@ -54,8 +66,6 @@
       </div>
       <div class="d-none" data-waiting-target="waiter">
         <%= render "pages/waiting" %>
-    <% else %>
-      <h3>Add items to your wishlist</h3>
-    <% end %>
       </div>
   </div>
+<% end %>
