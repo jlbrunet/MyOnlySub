@@ -148,7 +148,7 @@ class PagesController < ApplicationController
 
       @platforms.each do |platform, data|
         @pair_minutes_extended[platform.to_s] = data[:minutes_user]
-        @pair_indexed_average[platform.to_s] = data[:order].to_f / data[:order_total]
+        @pair_indexed_average[platform.to_s] = (data[:order].to_f / data[:order_total]) / data[:order_total]
         if data[:minutes_user] >= @user_time
           data[:classement] = 1
         elsif data[:minutes_user] != 0
@@ -162,12 +162,12 @@ class PagesController < ApplicationController
         @platforms[pair[0].to_sym][:classement] += index + 1
       end
 
-      @pair_indexed_average.sort_by {|key, value| value}.reverse!.each_with_index do |pair, index|
+      @pair_indexed_average.sort_by {|key, value| value}.each_with_index do |pair, index|
         @platforms[pair[0].to_sym][:classement] += index + 1
       end
 
-      @pair_minutes_wishlist.sort_by {|key, value| value}.each_with_index do |pair, index|
-        @platforms[pair[0].to_sym][:classement] += index + 2
+      @pair_minutes_wishlist.sort_by {|key, value| value}.reverse!.each_with_index do |pair, index|
+        @platforms[pair[0].to_sym][:classement] += (index + 1)*2
       end
 
       @platforms.each do |platform, data|
