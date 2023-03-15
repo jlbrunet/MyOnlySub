@@ -1,3 +1,5 @@
+Contact.destroy_all
+
 User.all.each do |user|
   user.photo.purge
 end
