@@ -76,28 +76,36 @@ class PagesController < ApplicationController
     @movies_necessary_series = []
     @movies_optional_movies = []
     @movies_necessary_movies = []
+    @movies_optional_series_id = []
+    @movies_necessary_series_id = []
+    @movies_optional_movies_id = []
+    @movies_necessary_movies_id = []
 
     @movies_optional.each do |movie|
       if movie.category == "series"
         @movies_optional_series.push(movie)
+        @movies_optional_series_id.push(movie.id)
       end
     end
 
     @movies_optional.each do |movie|
       if movie.category == "movie"
         @movies_optional_movies.push(movie)
+        @movies_optional_movies_id.push(movie.id)
       end
     end
 
     @movies_necessary.each do |movie|
       if movie.category == "movie"
         @movies_necessary_movies.push(movie)
+        @movies_necessary_movies_id.push(movie.id)
       end
     end
 
     @movies_necessary.each do |movie|
       if movie.category == "series"
         @movies_necessary_series.push(movie)
+        @movies_necessary_series_id.push(movie.id)
       end
     end
 
@@ -131,45 +139,81 @@ class PagesController < ApplicationController
   end
 
   def sub
-    sub_platform_declaration
+      sub_platform_declaration
 
-    @pair_minutes_extended = {}
-    @pair_minutes_wishlist = {}
-    @pair_indexed_average = {}
-    @pair_final = {}
+      @pair_minutes_extended = {}
+      @pair_minutes_wishlist = {}
+      @pair_indexed_average = {}
+      @pair_final = {}
 
-    @platforms.each do |platform, data|
-      @pair_minutes_extended[platform.to_s] = data[:minutes_user]
-      @pair_indexed_average[platform.to_s] = data[:order].to_f / data[:order_total]
-      if data[:minutes_user] >= @user_time
-        data[:classement] = 1
-      elsif data[:minutes_user] != 0
-        @pair_minutes_wishlist[platform.to_s] = data[:minutes_wishlist]
-      else
-        data[:classement] = 5
+      @platforms.each do |platform, data|
+        @pair_minutes_extended[platform.to_s] = data[:minutes_user]
+        @pair_indexed_average[platform.to_s] = data[:order].to_f / data[:order_total]
+        if data[:minutes_user] >= @user_time
+          data[:classement] = 1
+        elsif data[:minutes_user] != 0
+          @pair_minutes_wishlist[platform.to_s] = data[:minutes_wishlist]
+        else
+          data[:classement] = 5
+        end
       end
-    end
 
-    @pair_minutes_extended.sort_by {|key, value| value}.reverse!.each_with_index do |pair, index|
-      @platforms[pair[0].to_sym][:classement] += index + 1
-    end
+      @pair_minutes_extended.sort_by {|key, value| value}.reverse!.each_with_index do |pair, index|
+        @platforms[pair[0].to_sym][:classement] += index + 1
+      end
 
-    @pair_indexed_average.sort_by {|key, value| value}.reverse!.each_with_index do |pair, index|
-      @platforms[pair[0].to_sym][:classement] += index + 1
-    end
+      @pair_indexed_average.sort_by {|key, value| value}.reverse!.each_with_index do |pair, index|
+        @platforms[pair[0].to_sym][:classement] += index + 1
+      end
 
-    @pair_minutes_wishlist.sort_by {|key, value| value}.each_with_index do |pair, index|
-      @platforms[pair[0].to_sym][:classement] += index + 2
-    end
+      @pair_minutes_wishlist.sort_by {|key, value| value}.each_with_index do |pair, index|
+        @platforms[pair[0].to_sym][:classement] += index + 2
+      end
 
-    @platforms.each do |platform, data|
-      @pair_final[platform.to_s] = data[:classement]
-    end
+      @platforms.each do |platform, data|
+        @pair_final[platform.to_s] = data[:classement]
+      end
 
-    @final_answer = @pair_final.sort_by {|key, value| value}[0][0]
+      @final_answer = @pair_final.sort_by {|key, value| value}[0][0]
 
-    @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
-    platform_for
+      if params[:trick]
+        @movies_necessary_movies = []
+        @movies_necessary_series = []
+        @movies_optional_movies = []
+        @movies_optional_series = []
+        @movies_necessary = []
+        @movies_optional = []
+
+        @final_answer = current_user.suggested_platform
+        current_user.necessary_movies.each do |movie|
+          @movies_necessary_movies.push(Movie.find(movie))
+        end
+        current_user.necessary_series.each do |movie|
+          @movies_necessary_series.push(Movie.find(movie))
+        end
+        current_user.optional_movies.each do |movie|
+          @movies_optional_movies.push(Movie.find(movie))
+        end
+        current_user.optional_series.each do |movie|
+          @movies_optional_series.push(Movie.find(movie))
+        end
+
+        @movies_necessary = @movies_necessary_movies + @movies_necessary_series
+        @movies_optional = @movies_optional_movies + @movies_optional_series
+
+        @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
+        platform_for
+      else
+        current_user.suggested_platform = @final_answer
+        current_user.necessary_movies = @movies_necessary_movies_id
+        current_user.necessary_series = @movies_necessary_series_id
+        current_user.optional_movies = @movies_optional_movies_id
+        current_user.optional_series = @movies_optional_series_id
+        current_user.save
+
+        @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
+        platform_for
+      end
   end
 
   def platform_for
@@ -236,6 +280,4 @@ class PagesController < ApplicationController
 
   def validation
   end
-
-
 end
