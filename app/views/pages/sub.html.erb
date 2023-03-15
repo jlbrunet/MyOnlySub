@@ -20,9 +20,9 @@
     <div class="sub-page d-none d-flex flex-row justify-content-between" data-animation-target="moviesseries">
       <div class="background-series">
 
-        <% if @movies_necessary_series == [] %>
+        <% if @movies_necessary_series == [] && @movies_optional_series == [] %>
           <p class="nomovie">You don't have <%= @platform_for_filter %> series to watch.</p>
-        <% else %>
+        <% elsif @movies_necessary_series != [] %>
           <h4 class="series-title">Series</h4>
           <div class="d-flex justify-content-center">
               <div class="d-flex flex-row flex-wrap a">
@@ -55,9 +55,9 @@
 
       <div class= "background-movies">
 
-        <% if @movies_necessary_movies == [] %>
+        <% if @movies_necessary_movies == [] && @movies_optional_movies == [] %>
           <p class="nomovie">You don't have <%= @platform_for_filter %> movies to watch.</p>
-        <% else %>
+        <% elsif @movies_necessary_movies != [] %>
           <h4 class="movies-title">Movies</h4>
           <div class= "d-flex justify-content-center">
                 <div class="d-flex flex-row flex-wrap">
@@ -69,7 +69,6 @@
                 </div>
           </div>
         <% end %>
-
 
         <% if @movies_optional_movies == [] %>
         <% else %>
