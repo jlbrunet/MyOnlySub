@@ -31,7 +31,6 @@
           <% if @movies_necessary_series == [] && @movies_optional_series == [] %>
             <p class="nomovie">You don't have <%= @platform_for_filter %> series to watch.</p>
           <% elsif @movies_necessary_series != [] %>
-
             <div class="d-flex justify-content-center">
                 <div class="d-flex flex-row flex-wrap a">
                   <% @movies_necessary.each do |movie| %>
