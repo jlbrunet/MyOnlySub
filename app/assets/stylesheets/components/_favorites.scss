@@ -1,7 +1,6 @@
 .favorites-container {
   display: flex;
   min-height: calc(100vh - 278px);
-  margin-top: 30px;
 }
 
 .favorites-container ul {
@@ -14,4 +13,70 @@
 .favorites-container li {
   margin: 10px;
   list-style: none;
+}
+
+.titles{
+  margin-top: 15px;
+  margin-left: 30px;
+}
+
+.titles-match{
+  text-align: center;
+  margin-top: 15px;
+}
+
+.tab-content{
+  min-height: calc(100vh - 261px);
+}
+
+.parmentier {
+  padding-top: 20px;
+  top: 66px;
+  position: sticky;
+  margin-left: 30px;
+  border: none;
+  height: 80px;
+  z-index: 1000;
+  background-color: black;
+  .active{
+    border-radius: 20px;
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    color: var(--glow-color) !important;
+    border-color: var(--glow-color) !important;
+    text-shadow: var(--glow-spread-color) 1px 0 10px;
+  }
+  :hover{
+    border-radius: 20px;
+    border-color: white;
+    color:white;
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    color: var(--glow-color);
+  }
+}
+
+.treteau {
+  color: white;
+  border: none;
+  margin-right: 20px;
+}
+
+.tabouret {
+  width: 200px;
+  color: white;
+  background-color: white;
+
+  border: none;
+}
+.tabouret:hover{
+--glow-color: rgb(217, 176, 255);
+  --glow-spread-color: rgba(191, 123, 255, 0.781);
+  --enhanced-glow-color: rgb(231, 206, 255);
+  color: var(--glow-color) !important;
+  border-color: var(--glow-color) !important;
+  text-shadow: var(--glow-spread-color) 1px 0 10px;
+  box-shadow: var(--glow-spread-color) 1px 0 10px;
 }

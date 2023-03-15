@@ -23,20 +23,16 @@
 
         <li class="nav-item underlined">
           <% if params[:action] == "list" %>
-            <%= link_to "My wishlist", wishlist_path, class: "nav-link activated", style:"--glow-color: rgb(217, 176, 255);
+            <%= link_to "Wishlist", wishlist_path, class: "nav-link activated", style:"--glow-color: rgb(217, 176, 255);
                 --glow-spread-color: rgba(191, 123, 255, 0.781);
                 --enhanced-glow-color: rgb(231, 206, 255);
                 color: var(--glow-color);
                 text-shadow: var(--glow-spread-color) 1px 0 10px;
                 border-bottom: solid 2px rgb(217, 176, 255)" %>
           <% else %>
-            <%= link_to "My wishlist", wishlist_path, class: "nav-link"%>
+            <%= link_to "Wishlist", wishlist_path, class: "nav-link"%>
           <% end %>
         </li>
-
-          <li class="nav-item active">
-            <%= link_to "Social", social_path, class: "nav-link" %>
-          </li>
 
         <li class="nav-item underlined">
           <% if params[:action] == "sub" %>
@@ -48,19 +44,6 @@
                 border-bottom: solid 2px rgb(217, 176, 255)" %>
           <% else %>
             <%= link_to "My sub", sub_path(trick: "home"), class: "nav-link"%>
-          <% end %>
-        </li>
-
-        <li class="nav-item underlined">
-          <% if params[:action] == "favorites" %>
-            <%= link_to "My favorites", favorites_path, class: "nav-link activated", style:"--glow-color: rgb(217, 176, 255);
-                --glow-spread-color: rgba(191, 123, 255, 0.781);
-                --enhanced-glow-color: rgb(231, 206, 255);
-                color: var(--glow-color);
-                text-shadow: var(--glow-spread-color) 1px 0 10px;
-                border-bottom: solid 2px rgb(217, 176, 255)" %>
-          <% else %>
-            <%= link_to "My favorites", favorites_path, class: "nav-link"%>
           <% end %>
         </li>
 
@@ -84,9 +67,20 @@
             </div>
           </li>
 
-              <%# <li class="nav-item"></li>
-              <%= link_to root_path, class: "nav-link" do <i class="fa-solid fa-bell"></i>%>
-              <%# end %>
+          <li class="nav-item">
+            <% if params[:action] == "favorites" %>
+              <%= link_to favorites_path, class: "nav-link", style:"--glow-color: rgb(217, 176, 255);
+                  --glow-spread-color: rgba(191, 123, 255, 0.781);
+                  --enhanced-glow-color: rgb(231, 206, 255);
+                  color: var(--glow-color);" do %>
+                  <i class="fa-solid fa-heart"></i>
+                  <% end %>
+            <% else %>
+              <%= link_to favorites_path, class: "nav-link" do %>
+              <i class="fa-solid fa-heart"></i>
+              <% end %>
+            <% end %>
+          </li>
 
           <li class="nav-item">
             <div class="nav-link profile-name"><%= current_user.first_name %></div>

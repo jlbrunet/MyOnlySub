@@ -1,27 +1,97 @@
-<% sum = 0 %>
-<% @bookmarks.each do |bookmark| %>
-  <% if bookmark[:liked] != nil %>
-    <% sum += 1 %>
-  <% end %>
-<% end %>
+<ul class="nav nav-tabs parmentier" id="myTab" role="tablist">
 
-<% if sum == 0 %>
-  <div class="titled">
-    <h3>Mark items as liked to see them here !</h3>
-  </div>
-<% end %>
-   <div class="void">
-    <h3></h3>
-  </div>
-  <div class="favorites-container">
-    <ul>
-      <% @bookmarks.each do |bookmark| %>
-        <li style="color: white;">
-          <% movie = bookmark.movie %>
-          <div data-remove-url5-value=<%= add_path(movie)%>>
-          <%= render "cardmovie", movie: movie %>
-          </div>
-        </li>
+  <li class="nav-item treteau" role="presentation">
+    <button class="nav-link active tabouret" id="favorites-tab" data-bs-toggle="tab" data-bs-target="#favorites" type="button" role="tab" aria-controls="favorites" aria-selected="false">Favorites</button>
+  </li>
+
+  <li class="nav-item treteau" role="presentation">
+    <button class="nav-link tabouret" id="social-tab" data-bs-toggle="tab" data-bs-target="#social" type="button" role="tab" aria-controls="home" aria-selected="true">Social</button>
+  </li>
+
+</ul>
+
+<div class="tab-content" id="myTabContent">
+
+
+  <div class="tab-pane fade show active" id="favorites" role="tabpanel" aria-labelledby="favorites-tab">
+
+    <% sum = 0 %>
+    <% @bookmarks.each do |bookmark| %>
+      <% if bookmark[:liked] != nil %>
+        <% sum += 1 %>
       <% end %>
-    </ul>
+    <% end %>
+
+    <% if sum == 0 %>
+      <div class="titles">
+        <h3>Mark items as liked to see them here !</h3>
+      </div>
+    <% end %>
+      <div class="favorites-container">
+        <ul>
+          <% @bookmarks.each do |bookmark| %>
+            <li style="color: white;">
+              <% movie = bookmark.movie %>
+              <div data-remove-url5-value=<%= add_path(movie)%>>
+              <%= render "cardmovie", movie: movie %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
   </div>
+
+  <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
+      <div class="titles-match">
+        <h3>My matches</h3>
+      </div>
+    <div class="social-container">
+      <div class="d-flex flex-row justify-content-evenly">
+        <% @results.each do |result|
+          if Contact.find(result[0].to_i).first_user_id == current_user.id
+            user_id = Contact.find(result[0].to_i).second_user_id
+          else
+            user_id = Contact.find(result[0].to_i).first_user_id
+          end
+          user = User.find(user_id)
+          bookmarks_u_ticked = user.bookmarks.where(ticked: true)
+          bookmarks_u_liked = user.bookmarks.where(liked: true) %>
+
+          <div class="d-flex flex-column align-items-center">
+            <div>
+              <%= cl_image_tag user.photo.key, class: "img-social" %>
+              <div> <h3><%= user.first_name%></h3></div>
+            </div>
+
+            <div class="d-flex flex-row">
+              <div class="d-flex flex-column p-3">
+                <h4>Wishlist</h4>
+                <% bookmarks_u_ticked.each do |bookmark|
+                  movie = Movie.find(bookmark.movie_id) %>
+                  <div class="mb-3">
+                    <%= render "pages/cardmovie", movie: movie %>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class="d-flex flex-column p-3">
+                <h4>Favorites</h4>
+                <% bookmarks_u_liked.each do |bookmark|
+                  if bookmarks_u_ticked.exclude?(bookmark)
+                    movie = Movie.find(bookmark.movie_id) %>
+                    <div class="mb-3">
+                      <%= render "pages/cardmovie", movie: movie %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
