@@ -60,6 +60,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_142121) do
     t.bigint "second_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "friends", default: false
+    t.integer "score"
     t.index ["first_user_id"], name: "index_contacts_on_first_user_id"
     t.index ["second_user_id"], name: "index_contacts_on_second_user_id"
   end

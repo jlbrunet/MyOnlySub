@@ -26,11 +26,27 @@
         <i class="fa-solid fa-eye buttons-footer-card" data-action="click->movie-modal#display"></i>
       <% end %>
       <div class="d-flex flex-row">
-        <%= link_to liked_path(movie), data: {action:"click->add-button#liked"} do %>
-          <i class="fa-solid fa-thumbs-up buttons-footer-card me-3"></i>
-        <% end %>
-        <%= link_to unliked_path(movie), data: {action:"click->add-button#unliked"} do %>
-          <i class="fa-solid fa-thumbs-down buttons-footer-card"></i>
+        <% if movie.bookmarks.where(user: current_user) != [] && movie.bookmarks.first[:liked] == true %>
+          <%= link_to liked_path(movie), data: {action:"click->add-button#liked"} do %>
+            <i class="fa-solid fa-thumbs-up buttons-footer-card me-3 <%= (movie.bookmarks.where(user: current_user) != [] && movie.bookmarks.first[:liked] == true) ? "active" : "unactive" %>" data-add-button-target= "like"></i>
+          <% end %>
+          <%= link_to unliked_path(movie), data: {action:"click->add-button#unliked"} do %>
+            <i class="fa-solid fa-thumbs-down buttons-footer-card  <%= (movie.bookmarks.where(user: current_user) != [] && movie.bookmarks.first[:liked] == false) ? "active" : "unactive" %>" data-add-button-target= "unlike"></i>
+          <% end %>
+        <% elsif movie.bookmarks.where(user: current_user) != [] && movie.bookmarks.first[:liked] == false %>
+          <%= link_to liked_path(movie), data: {action:"click->add-button#liked"} do %>
+            <i class="fa-solid fa-thumbs-up buttons-footer-card me-3 <%= (movie.bookmarks.where(user: current_user) != [] && movie.bookmarks.first[:liked] == true) ? "active" : "unactive" %>" data-add-button-target= "like"></i>
+          <% end %>
+          <%= link_to unliked_path(movie), data: {action:"click->add-button#unliked"} do %>
+            <i class="fa-solid fa-thumbs-down buttons-footer-card  <%= (movie.bookmarks.where(user: current_user) != [] && movie.bookmarks.first[:liked] == false) ? "active" : "unactive" %>" data-add-button-target= "unlike"></i>
+          <% end %>
+        <% else %>
+            <%= link_to liked_path(movie), data: {action:"click->add-button#liked"} do %>
+            <i class="fa-solid fa-thumbs-up buttons-footer-card me-3" data-add-button-target= "like"></i>
+          <% end %>
+          <%= link_to unliked_path(movie), data: {action:"click->add-button#unliked"} do %>
+            <i class="fa-solid fa-thumbs-down buttons-footer-card " data-add-button-target= "unlike"></i>
+          <% end %>
         <% end %>
       </div>
     </div>

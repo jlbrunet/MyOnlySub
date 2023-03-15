@@ -139,27 +139,6 @@ class PagesController < ApplicationController
   end
 
   def sub
-    if params[:trick]
-      @movies_necessary_movies = []
-      @movies_necessary_series = []
-      @movies_optional_movies = []
-      @movies_optional_series = []
-
-      @final_answer = current_user.suggested_platform
-      current_user.necessary_movies.each do |movie|
-        @movies_necessary_movies.push(Movie.find(movie))
-      end
-      current_user.necessary_series.each do |movie|
-        @movies_necessary_series.push(Movie.find(movie))
-      end
-      current_user.optional_movies.each do |movie|
-        @movies_optional_movies.push(Movie.find(movie))
-      end
-      current_user.optional_series.each do |movie|
-        @movies_optional_series.push(Movie.find(movie))
-      end
-      platform_for
-    else
       sub_platform_declaration
 
       @pair_minutes_extended = {}
@@ -197,12 +176,29 @@ class PagesController < ApplicationController
 
       @final_answer = @pair_final.sort_by {|key, value| value}[0][0]
 
-      current_user.suggested_platform = @final_answer
-      current_user.necessary_movies = @movies_necessary_movies_id
-      current_user.necessary_series = @movies_necessary_series_id
-      current_user.optional_movies = @movies_optional_movies_id
-      current_user.optional_series = @movies_optional_series_id
-      current_user.save
+      if params[:trick]
+        @final_answer = current_user.suggested_platform
+        current_user.necessary_movies.each do |movie|
+          @movies_necessary_movies.push(Movie.find(movie))
+        end
+        current_user.necessary_series.each do |movie|
+          @movies_necessary_series.push(Movie.find(movie))
+        end
+        current_user.optional_movies.each do |movie|
+          @movies_optional_movies.push(Movie.find(movie))
+        end
+        current_user.optional_series.each do |movie|
+          @movies_optional_series.push(Movie.find(movie))
+        end
+      else
+        current_user.suggested_platform = @final_answer
+        current_user.necessary_movies = @movies_necessary_movies_id
+        current_user.necessary_series = @movies_necessary_series_id
+        current_user.optional_movies = @movies_optional_movies_id
+        current_user.optional_series = @movies_optional_series_id
+        current_user.save
+      end
+      
       @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
       platform_for
     end
@@ -230,6 +226,44 @@ class PagesController < ApplicationController
   end
 
   def social
+    @users = User.all
+    @bookmarks_cu = Bookmark.where(user: current_user)
+    @users.each do |user|
+      if Contact.where(first_user_id: user.id).where(second_user_id: current_user.id) == []
+        if Contact.where(first_user_id: current_user.id).where(second_user_id: user.id) == []
+          @contact = Contact.new(first_user_id: current_user.id, second_user_id: user.id, score: 0)
+        else
+          @contact = Contact.where(first_user_id: current_user.id).where(second_user_id: user.id).first
+        end
+      else
+        @contact = Contact.where(first_user_id: user.id).where(second_user_id: current_user.id).first
+      end
+      # utiliser @contact et le save à la fin
+      bookmarks_u = Bookmark.where(user_id: user.id)
+      sum = 0
+      bookmarks_u.each do |bookmark|
+        if @bookmarks_cu.where(movie_id: bookmark[:movie_id] ) != []
+          bookmark_cu = @bookmarks_cu.where(movie_id: bookmark[:movie_id]).first
+          if bookmark_cu[:liked] == bookmark[:liked] && (bookmark_cu[:liked] == true || bookmark_cu[:liked] == false)
+            sum += 5
+          elsif bookmark_cu[:liked] != bookmark[:liked] && bookmark_cu[:liked] != nil && bookmark_cu[:liked] != nil
+            sum -= 3
+          end
+        end
+      end
+
+      @contact.score = sum
+      @contact.save
+    end
+    @contact_double = Contact.where(first_user_id: current_user.id).where(second_user_id: current_user.id).first
+    @contact_double.score = -400
+    @contact_double.save
+
+    my_users = {}
+    (Contact.where(first_user_id: current_user.id) + Contact.where(second_user_id: current_user.id)).each do |x|
+      my_users[x.id.to_s] = x.score
+    end
+    @results = my_users.sort { |a, b| a[1] <=> b[1] }.reverse.first(3)
   end
 
   def validation
