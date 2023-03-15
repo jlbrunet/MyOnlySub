@@ -177,6 +177,13 @@ class PagesController < ApplicationController
       @final_answer = @pair_final.sort_by {|key, value| value}[0][0]
 
       if params[:trick]
+        @movies_necessary_movies = []
+        @movies_necessary_series = []
+        @movies_optional_movies = []
+        @movies_optional_series = []
+        @movies_necessary = []
+        @movies_optional = []
+
         @final_answer = current_user.suggested_platform
         current_user.necessary_movies.each do |movie|
           @movies_necessary_movies.push(Movie.find(movie))
@@ -190,6 +197,12 @@ class PagesController < ApplicationController
         current_user.optional_series.each do |movie|
           @movies_optional_series.push(Movie.find(movie))
         end
+
+        @movies_necessary = @movies_necessary_movies + @movies_necessary_series
+        @movies_optional = @movies_optional_movies + @movies_optional_series
+
+        @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
+        platform_for
       else
         current_user.suggested_platform = @final_answer
         current_user.necessary_movies = @movies_necessary_movies_id
@@ -197,11 +210,10 @@ class PagesController < ApplicationController
         current_user.optional_movies = @movies_optional_movies_id
         current_user.optional_series = @movies_optional_series_id
         current_user.save
+
+        @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
+        platform_for
       end
-      
-      @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
-      platform_for
-    end
   end
 
   def platform_for
