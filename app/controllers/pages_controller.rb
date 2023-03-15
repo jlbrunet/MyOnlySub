@@ -39,7 +39,7 @@ class PagesController < ApplicationController
       disney: { name: "Disney+", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 },
       apple: { name: "AppleTV+", minutes_wishlist: 0, minutes_user: 0, classement: 0, order: 1, order_total: 1 }
     }
-    @user_time = current_user.availability * 60 * 1.5
+    @user_time = current_user.availability * 60
     @duration = 0
     @movies_necessary = []
     @movies_total = []
