@@ -5,57 +5,67 @@
   <% end %>
 <% end %>
 
-  <div data-controller="waiting">
-    <div class="wrapper-wish">
-      <div class="container-wish">
+
       <% if sum != 0 %>
+      <div class="titled">
         <h3>Sort your items by priority</h3>
-        <ul data-controller="sortable" data-sortable-resource-name-value="priority" >
-          <% @bookmarks.each do |bookmark| %>
-            <!-- <li data-sortable-update-url="/todos/1">Pet the cat</li> -->
-            <li style="color: white;" class="mouse" data-sortable-update-url="<%= priority_path(bookmark) %>">
-              <% movie = bookmark.movie %>
-                <%= render "pages/cardmovie", movie: movie %>
-            </li>
-          <% end %>
-        </ul>
       </div>
-
-      <div data-controller="sub-modal">
-        <div class="modal-opener">
-          <p><i class="fa-solid fa-tv"></i>  Check the best recommended sub for you</p>
-          <button class="wish-sub-btn btn-sub" data-action="click->sub-modal#display">Generate my sub</button>
-        </div>
-
-        <div class="modal-container d-none" data-sub-modal-target="modal" data-waiting-target="modal">
-          <div class="modal-backdrop" data-action="click->sub-modal#close">
-          </div>
-          <div class="wish-notice d-flex flex-row sub-modal">
-            <div data-action="click->sub-modal#close">
-              <i class="fa-solid fa-xmark icon-cross"></i>
-            </div>
-            <br>
-            <div id="time-modal">
-              <p><i class="fa-sharp fa-solid fa-clock"></i> How many hours are you available during the following month ?</p>
-              <%= simple_form_for(@user, url: profile_update_path(@user), html: { class: "my-form", novalidate: false, data: { action:  "submit->waiting#waiting" } }) do |f| %>
-                <%= f.input :availability,
-                label: false,
-                placeholder: "How many hours ?",
-                input_html: { class: 'input-login-sub', min: '1', data: { waiting_target: "number" } }
-                %>
-                <%= f.submit "Validate my availability",
-                  :class => "btn-sub2"
-                %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <% else %>
+      <% else %>
+        <div class="titled">
           <h3>Add items to your wishlist</h3>
-        <% end %>
+        </div>
+        <div class="wrapper-wish">
+        </div>
+      <% end %>
+
+<% if sum != 0 %>
+  <div data-controller="waiting">
+      <div class="wrapper-wish">
+        <div class="container-wish">
+          <ul data-controller="sortable" data-sortable-resource-name-value="priority" >
+            <% @bookmarks.each do |bookmark| %>
+              <!-- <li data-sortable-update-url="/todos/1">Pet the cat</li> -->
+              <li style="color: white;" class="mouse" data-sortable-update-url="<%= priority_path(bookmark) %>">
+                <% movie = bookmark.movie %>
+                  <%= render "pages/cardmovie", movie: movie %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div data-controller="sub-modal">
+          <div class="modal-opener">
+            <p><i class="fa-solid fa-tv"></i>  Check the best recommended sub for you</p>
+            <button class="wish-sub-btn btn-sub" data-action="click->sub-modal#display">Generate my sub</button>
+          </div>
+
+          <div class="modal-container d-none" data-sub-modal-target="modal" data-waiting-target="modal">
+            <div class="modal-backdrop" data-action="click->sub-modal#close">
+            </div>
+            <div class="wish-notice d-flex flex-row sub-modal">
+              <div data-action="click->sub-modal#close">
+                <i class="fa-solid fa-xmark icon-cross"></i>
+              </div>
+              <br>
+              <div id="time-modal">
+                <p><i class="fa-sharp fa-solid fa-clock"></i> How many hours are you available during the following month ?</p>
+                <%= simple_form_for(@user, url: profile_update_path(@user), html: { class: "my-form", novalidate: false, data: { action:  "submit->waiting#waiting" } }) do |f| %>
+                  <%= f.input :availability,
+                  label: false,
+                  placeholder: "How many hours ?",
+                  input_html: { class: 'input-login-sub', min: '1', data: { waiting_target: "number" } }
+                  %>
+                  <%= f.submit "Validate my availability",
+                    :class => "btn-sub2"
+                  %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="d-none" data-waiting-target="waiter">
-      <%= render "pages/waiting" %>
-    </div>
+      <div class="d-none" data-waiting-target="waiter">
+        <%= render "pages/waiting" %>
+      </div>
   </div>
+<% end %>
