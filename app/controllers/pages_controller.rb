@@ -177,38 +177,39 @@ class PagesController < ApplicationController
       @final_answer = @pair_final.sort_by {|key, value| value}[0][0]
 
       if params[:trick]
-        @movies_necessary_movies = []
-        @movies_necessary_series = []
-        @movies_optional_movies = []
-        @movies_optional_series = []
-        @movies_necessary = []
-        @movies_optional = []
+        @movies_necessary_movies_platform = []
+        @movies_necessary_series_platform = []
+        @movies_optional_movies_platform = []
+        @movies_optional_series_platform = []
+        @movies_necessary_platform = []
+        @movies_optional_platform = []
 
         @final_answer = current_user.suggested_platform
         current_user.necessary_movies.each do |movie|
-          @movies_necessary_movies.push(Movie.find(movie))
+          @movies_necessary_movies_platform.push(Movie.find(movie))
         end
         current_user.necessary_series.each do |movie|
-          @movies_necessary_series.push(Movie.find(movie))
+          @movies_necessary_series_platform.push(Movie.find(movie))
         end
         current_user.optional_movies.each do |movie|
-          @movies_optional_movies.push(Movie.find(movie))
+          @movies_optional_movies_platform.push(Movie.find(movie))
         end
         current_user.optional_series.each do |movie|
-          @movies_optional_series.push(Movie.find(movie))
+          @movies_optional_series_platform.push(Movie.find(movie))
         end
 
-        @movies_necessary = @movies_necessary_movies + @movies_necessary_series
-        @movies_optional = @movies_optional_movies + @movies_optional_series
+        @movies_necessary_platform = @movies_necessary_movies_platform + @movies_necessary_series_platform
+        @movies_optional_platform = @movies_optional_movies_platform + @movies_optional_series_platform
 
         @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
         platform_for
+
       else
         current_user.suggested_platform = @final_answer
-        current_user.necessary_movies = @movies_necessary_movies_id
-        current_user.necessary_series = @movies_necessary_series_id
-        current_user.optional_movies = @movies_optional_movies_id
-        current_user.optional_series = @movies_optional_series_id
+        current_user.necessary_movies = @movies_necessary_movies_platform_id
+        current_user.necessary_series = @movies_necessary_series_platform_id
+        current_user.optional_movies = @movies_optional_movies_platform_id
+        current_user.optional_series = @movies_optional_series_platform_id
         current_user.save
 
         @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
@@ -280,6 +281,46 @@ class PagesController < ApplicationController
           @movies_necessary_series_platform.push(movie)
           @movies_necessary_series_platform_id.push(movie.id)
         end
+      end
+
+      if params[:trick]
+        @movies_necessary_movies_platform = []
+        @movies_necessary_series_platform = []
+        @movies_optional_movies_platform = []
+        @movies_optional_series_platform = []
+        @movies_necessary_platform = []
+        @movies_optional_platform = []
+
+        @final_answer = current_user.suggested_platform
+        current_user.necessary_movies.each do |movie|
+          @movies_necessary_movies_platform.push(Movie.find(movie))
+        end
+        current_user.necessary_series.each do |movie|
+          @movies_necessary_series_platform.push(Movie.find(movie))
+        end
+        current_user.optional_movies.each do |movie|
+          @movies_optional_movies_platform.push(Movie.find(movie))
+        end
+        current_user.optional_series.each do |movie|
+          @movies_optional_series_platform.push(Movie.find(movie))
+        end
+
+        @movies_necessary_platform = @movies_necessary_movies_platform + @movies_necessary_series_platform
+        @movies_optional_platform = @movies_optional_movies_platform + @movies_optional_series_platform
+
+        @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
+        platform_for
+
+      else
+        current_user.suggested_platform = @final_answer
+        current_user.necessary_movies = @movies_necessary_movies_platform_id
+        current_user.necessary_series = @movies_necessary_series_platform_id
+        current_user.optional_movies = @movies_optional_movies_platform_id
+        current_user.optional_series = @movies_optional_series_platform_id
+        current_user.save
+
+        @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
+        platform_for
       end
   end
 
