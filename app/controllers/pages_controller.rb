@@ -214,6 +214,73 @@ class PagesController < ApplicationController
         @bookmarks = Bookmark.where(user: current_user).where(ticked: true).order(:priority)
         platform_for
       end
+
+      @movies_total_platform = []
+      @movies_necessary_platform = []
+      @movies_optional_platform = []
+      @movies_necessary_movies_platform = []
+      @movies_necessary_series_platform = []
+      @movies_optional_movies_platform = []
+      @movies_optional_series_platform = []
+      @movies_necessary_movies_platform_id = []
+      @movies_necessary_series_platform_id = []
+      @movies_optional_movies_platform_id = []
+      @movies_optional_series_platform_id = []
+
+      @movies_total.each do |movie|
+        if movie.platform == @platform_for_filter
+          @movies_total_platform.push(movie)
+        end
+      end
+
+      @time = 0
+      @total_time = 0
+
+      @movies_total_platform.each do |movie|
+        if @total_time <= @user_time
+          @movies_necessary_platform.push(movie)
+          if movie.category == "movie"
+            @time = movie.duration.gsub(" min", "").to_i
+          elsif movie.category == "series"
+            @time = (movie.duration.gsub(" min", "").to_i * 20)
+          end
+          @total_time += @time
+        end
+      end
+
+      @movies_total_platform.each do |movie|
+        unless @movies_necessary_platform.include?(movie)
+          @movies_optional_platform.push(movie)
+        end
+      end
+
+      @movies_optional_platform.each do |movie|
+        if movie.category == "series"
+          @movies_optional_series_platform.push(movie)
+          @movies_optional_series_platform_id.push(movie.id)
+        end
+      end
+
+      @movies_optional_platform.each do |movie|
+        if movie.category == "movie"
+          @movies_optional_movies_platform.push(movie)
+          @movies_optional_movies_platform_id.push(movie.id)
+        end
+      end
+
+      @movies_necessary_platform.each do |movie|
+        if movie.category == "movie"
+          @movies_necessary_movies_platform.push(movie)
+          @movies_necessary_movies_platform_id.push(movie.id)
+        end
+      end
+
+      @movies_necessary_platform.each do |movie|
+        if movie.category == "series"
+          @movies_necessary_series_platform.push(movie)
+          @movies_necessary_series_platform_id.push(movie.id)
+        end
+      end
   end
 
   def platform_for

@@ -28,12 +28,12 @@
       <div class="sub-page d-none d-flex flex-row justify-content-between" data-animation-target="moviesseries">
         <div class="background-series">
           <h4 class="series-title">Series</h4>
-          <% if @movies_necessary_series == [] && @movies_optional_series == [] %>
+          <% if @movies_necessary_series_platform == [] && @movies_optional_series_platform == [] %>
             <p class="nomovie">You don't have <%= @platform_for_filter %> series to watch.</p>
-          <% elsif @movies_necessary_series != [] %>
+          <% elsif @movies_necessary_series_platform != [] %>
             <div class="d-flex justify-content-center">
                 <div class="d-flex flex-row flex-wrap a">
-                  <% @movies_necessary.each do |movie| %>
+                  <% @movies_necessary_platform.each do |movie| %>
                     <% if movie[:category] == "series" && movie[:platform] == @platform_for_filter %>
                         <%= render "cardmovie", movie: movie %>
                     <% end %>
@@ -41,13 +41,13 @@
                 </div>
             </div>
           <% end %>
-          <% if @movies_optional_series == [] %>
+          <% if @movies_optional_series_platform == [] %>
           <% else %>
             <div>
               <h4 class="title">If you have more time ... </h4>
               <div class="d-flex justify-content-center">
                   <div class="d-flex flex-row flex-wrap a">
-                      <% @movies_optional.each do |movie| %>
+                      <% @movies_optional_platform.each do |movie| %>
                         <% if movie[:category] == "series" && movie[:platform] == @platform_for_filter %>
                             <%= render "cardmovie", movie: movie %>
                         <% end %>
@@ -61,13 +61,13 @@
 
         <div class= "background-movies">
           <h4 class="movies-title">Movies</h4>
-          <% if @movies_necessary_movies == [] && @movies_optional_movies == [] %>
+          <% if @movies_necessary_movies_platform == [] && @movies_optional_movies_platform == [] %>
             <p class="nomovie">You don't have <%= @platform_for_filter %> movies to watch.</p>
-          <% elsif @movies_necessary_movies != [] %>
+          <% elsif @movies_necessary_movies_platform != [] %>
 
             <div class= "d-flex justify-content-center">
                   <div class="d-flex flex-row flex-wrap a">
-                      <% @movies_necessary.each do |movie| %>
+                      <% @movies_necessary_platform.each do |movie| %>
                         <% if movie[:category] == "movie" && movie[:platform] == @platform_for_filter %>
                           <%= render "cardmovie", movie: movie %>
                         <% end %>
@@ -75,13 +75,13 @@
                   </div>
             </div>
           <% end %>
-          <% if @movies_optional_movies == [] %>
+          <% if @movies_optional_movies_platform == [] %>
           <% else %>
             <div>
               <h4 class="title">If you have more time ... </h4>
               <div class= "d-flex justify-content-center">
                   <div class="d-flex flex-row flex-wrap a">
-                      <% @movies_optional.each do |movie| %>
+                      <% @movies_optional_platform.each do |movie| %>
                         <% if movie[:category] == "movie" && movie[:platform] == @platform_for_filter %>
                           <%= render "cardmovie", movie: movie %>
                         <% end %>
