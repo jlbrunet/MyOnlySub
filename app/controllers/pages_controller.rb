@@ -231,7 +231,7 @@ class PagesController < ApplicationController
     (Contact.where(first_user_id: current_user.id) + Contact.where(second_user_id: current_user.id)).each do |x|
       my_users[x.id.to_s] = x.score
     end
-    @results = my_users.sort { |a, b| a[1] <=> b[1] }.reverse.first(3)
+    @results = my_users.sort { |a, b| a[1] <=> b[1] }.reverse.first(2)
   end
 
   def validation
