@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 let a = null
 // Connects to data-controller="animation"
 export default class extends Controller {
-  static targets = ["platform", "info", "moviesseries", "ibutton"]
+  static targets = ["platform", "moviesseries", "infos"]
 
   connect() {
     a = setInterval(() => this.animation(), 1000)
@@ -26,6 +26,6 @@ export default class extends Controller {
   display() {
     clearInterval(a)
     this.moviesseriesTarget.classList.remove("d-none")
-    this.ibuttonTarget.classList.remove("d-none")
+    this.infosTarget.classList.remove("d-none")
   }
 }
