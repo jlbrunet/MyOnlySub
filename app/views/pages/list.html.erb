@@ -1,4 +1,9 @@
-<% sum = 0 %>
+
+  <div data-controller="waiting" data-action="load@window->waiting#unlashthedogs">
+
+      <div class="d-none black-window" data-waiting-target="fullpage">
+      </div>
+      <% sum = 0 %>
 <% @bookmarks.each do |bookmark| %>
   <% if bookmark[:ticked] == true %>
     <% sum += 1 %>
@@ -19,7 +24,6 @@
       <% end %>
 
 <% if sum != 0 %>
-  <div data-controller="waiting">
       <div class="wrapper-wish">
         <div class="container-wish">
           <ul data-controller="sortable" data-sortable-resource-name-value="priority" >
