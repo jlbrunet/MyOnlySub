@@ -28,17 +28,15 @@ body {
 .sub-modal {
   @extend .modal;
   position: absolute;
-  left: 32vw;
+  left: 411px;
   position: relative;
-  border-radius: 6px;
-  width: 30vw;
-  height: 32vh;
-  background-color: #242424;
+  border-radius: 20px;
+  width: 24vw;
+  height: 40vh;
+  background-color: black;
   justify-content: center;
+  text-align: center;
 
-  p {
-    text-align: justify;
-  }
 
   .icon-cross {
     position: absolute;
@@ -57,6 +55,52 @@ body {
     flex-direction: column;
     justify-content: center;
     padding: 20px;
+
+    .form-control.is-valid:focus {
+      border: none;
+      border-bottom: 2px solid white;
+      box-shadow: none;
   }
 
+    .input-login-sub {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      border: none;
+      border-bottom: 1px solid #fff;
+      outline: none;
+      background: transparent;
+      border-radius: 0;
+      text-align: center;
+    }
+
+    .btn-sub2 {
+      position: relative;
+      display: inline-block;
+      color: #ffffff;
+      font-size: 16px;
+      text-decoration: none;
+      overflow: hidden;
+      transition: .5s;
+      letter-spacing: 4px;
+      border-radius: 0px;
+      background-color: transparent;
+      margin-top: 20px;
+      width: 138px;
+    }
+
+    .btn-sub2:hover {
+      border-radius: 10px;
+      --glow-color: rgb(217, 176, 255);
+      --glow-spread-color: rgba(191, 123, 255, 0.781);
+      --enhanced-glow-color: rgb(231, 206, 255);
+      --btn-color: rgb(100, 61, 136);
+      text-decoration: none;
+      color: var(--btn-color);
+      background-color: var(--glow-color);
+      box-shadow: 0 0 1em 0.25em var(--glow-color), 0 0 5em 1em var(--glow-spread-color), inset 0 0 0.75em 0.25em var(--glow-color);
+      font-weight: bold;
+    }
+  }
 }
