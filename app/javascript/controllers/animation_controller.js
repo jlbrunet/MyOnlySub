@@ -27,5 +27,6 @@ export default class extends Controller {
     clearInterval(a)
     this.moviesseriesTarget.classList.remove("d-none")
     this.infosTarget.classList.remove("d-none")
+    this.platformTarget.classList.remove("image_hover")
   }
 }
