@@ -28,51 +28,18 @@
       </div>
     <% end %>
 
-    <% netflix = 0 %>
-    <% amazon = 0 %>
-    <% aptv = 0 %>
-    <% disney = 0 %>
-    <% @bookmarks.each do |bookmark| %>
-      <% movie = bookmark.movie %>
-      <% case movie.platform %>
-      <% when "Netflix" %>
-        <% netflix += 1 %>
-      <% when "Amazon Prime Video" %>
-        <% amazon += 1 %>
-      <% when "AppleTV+" %>
-        <% aptv += 1 %>
-      <% else %>
-        <% disney += 1 %>
-      <% end %>
-    <% end %>
-    <% all_platforms = {netflix: netflix, amazon: amazon, aptv: aptv, disney: disney} %>
-    <% sorted_platform = all_platforms.sort_by {|_key, value| value}.to_h %>
-    <% favorite_platform = sorted_platform.keys.last.to_s %>
-    <p>Your favorite platform is :
-      <% case favorite_platform %>
-      <% when "netflix" %>
-        <%= image_tag("netflix.png", height)%>
-      <% when "amazon" %>
-        <%= image_tag("amazon.png")%>
-      <% when "aptv" %>
-        <%= image_tag("aptv.png")%>
-      <% else %>
-        <%= image_tag("disney.png")%>
-      <% end %>
-    </p>
-
-      <div class="favorites-container">
-        <ul>
-          <% @bookmarks.each do |bookmark| %>
-            <li style="color: white;">
-              <% movie = bookmark.movie %>
-              <div data-remove-url5-value=<%= add_path(movie)%>>
-              <%= render "cardmovie", movie: movie %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+    <div class="favorites-container">
+      <ul>
+        <% @bookmarks.each do |bookmark| %>
+          <li style="color: white;">
+            <% movie = bookmark.movie %>
+            <div data-remove-url5-value=<%= add_path(movie)%>>
+            <%= render "cardmovie", movie: movie %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
   </div>
 
