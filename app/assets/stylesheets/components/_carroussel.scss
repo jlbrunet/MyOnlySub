@@ -2,7 +2,8 @@ $itemGrow: 1.2;
 $duration: 250ms;
 
 .carroussel-top {
-  margin-bottom: -15px;
+  margin-bottom: 0px;
+  margin-top: 40px;
   margin-left: 80px;
 }
 
@@ -11,6 +12,7 @@ $duration: 250ms;
   grid-template-columns: repeat(3,100%);
   overflow:hidden;
   scroll-behavior: smooth;
+  margin-bottom: 10px;
 }
 
 section {
@@ -61,6 +63,16 @@ section {
     }
   }
 
+}
+
+.separation {
+  width: 600px;
+  --glow-color: rgb(217, 176, 255);
+  --glow-spread-color: rgba(191, 123, 255, 0.781);
+  --enhanced-glow-color: rgba(191, 123, 255, 0.781);
+  background-color: var(--glow-color);
+  margin: 0 auto;
+  box-shadow: 0 0 0.1em 0.2px var(--glow-color), 0 0 1.5em 4px var(--glow-spread-color), inset 0 0 0.5em 0.1em var(--glow-color)
 }
 
 // Remove the arrow for Mobile
