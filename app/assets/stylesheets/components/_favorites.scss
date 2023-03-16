@@ -1,6 +1,5 @@
 .favorites-container {
   display: flex;
-  min-height: calc(100vh - 278px);
 }
 
 .favorites-container ul {
@@ -26,7 +25,15 @@
 }
 
 .tab-content{
-  min-height: calc(100vh - 261px);
+  padding-top: 20px;
+}
+
+#favorites{
+  min-height: calc(100vh - 281px);
+}
+
+#social{
+min-height: calc(100vh - 266px);
 }
 
 .parmentier {
@@ -68,7 +75,6 @@
   width: 200px;
   color: white;
   background-color: white;
-
   border: none;
 }
 .tabouret:hover{
