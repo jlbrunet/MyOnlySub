@@ -16,10 +16,19 @@
 <% else %>
 
   <div class="banner" style="background-image: url(<%= asset_path('banner.jpg') %>);">
-    <div class="container">
-      <p><span data-controller="typed-js"></span></p>
-    </div>
   </div>
+
+    <div class="container-banner">
+    </div>
+
+    <div data-controller="typed-js">
+      <div class="title-banner">
+        <span data-typed-js-target="line"></span>
+      </div>
+      <div class="titles-banner">
+        <span data-typed-js-target="lines"></span>
+      </div>
+    </div>
 
   <div class="mt-3">
 
