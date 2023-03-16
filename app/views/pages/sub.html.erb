@@ -8,21 +8,18 @@
   <div class="void">
     <h3></h3>
     </div>
-    <div class="container-sub-page" data-controller="animation info-modal" >
+    <div class="container-sub-page" data-controller="animation" >
 
       <div class="suggestion">
         <h4 class="d-flex justify-content-center">Suggestion for the next month :</h4>
-        <div class="d-flex justify-content-center container-infos">
-          <div class="divbutton">
+          <div class="divbutton d-flex justify-content-center">
             <button class="image" data-action="click->animation#display" data-animation-target="platform">
               <%= image_tag("#{@platform_for_logo}.png", width:200, crop: :fill)%>
             </button>
-            <button class="button d-none" data-animation-target="ibutton" data-action="click->info-modal#display">i</button>
           </div>
-          <div class = "modal-infos informations d-none" data-info-modal-target="modal">
+          <div class = "informations d-none d-flex justify-content-center" data-animation-target="infos">
             <%= render "platforms", platform: @platform_for_logo %>
           </div>
-        </div>
       </div>
 
       <div class="sub-page d-none d-flex flex-row justify-content-between" data-animation-target="moviesseries">
