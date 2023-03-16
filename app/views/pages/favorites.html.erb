@@ -27,18 +27,19 @@
         <h3>Mark items as liked to see them here !</h3>
       </div>
     <% end %>
-      <div class="favorites-container">
-        <ul>
-          <% @bookmarks.each do |bookmark| %>
-            <li style="color: white;">
-              <% movie = bookmark.movie %>
-              <div data-remove-url5-value=<%= add_path(movie)%>>
-              <%= render "cardmovie", movie: movie %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+
+    <div class="favorites-container">
+      <ul>
+        <% @bookmarks.each do |bookmark| %>
+          <li style="color: white;">
+            <% movie = bookmark.movie %>
+            <div data-remove-url5-value=<%= add_path(movie)%>>
+            <%= render "cardmovie", movie: movie %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
   </div>
 
