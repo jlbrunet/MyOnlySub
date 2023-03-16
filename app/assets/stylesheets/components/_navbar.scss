@@ -103,7 +103,7 @@
 //Searchbar
 
 .nav-item-search {
-  flex: 0.8;
+  flex: 0.45;
 }
 
 .group6 {
@@ -117,25 +117,28 @@
 
 .input6 {
   width: 100%;
+  color:white !important;
   height: 32px;
   line-height: 28px;
   padding: 0 1rem;
   padding-left: 2.5rem;
-  border: 2px solid transparent;
+  border: 1px solid #9e9ea7;
   border-radius: 30px;
   outline: none;
-  background-color: #d6d5d6 !important;
+  background-color: #000000 !important;
   color: #0d0c22;
   transition: .3s ease;
 }
 
 .input6::placeholder {
   color: #9e9ea7;
+  font-size:14px;
 }
 
 .input6:focus,
 input6:hover {
   outline: none;
+  color:white;
   border-color: none;
   background-color: #fff;
   --glow-color: rgb(217, 176, 255);
