@@ -40,7 +40,7 @@
         <div data-controller="sub-modal">
           <div class="modal-opener">
             <p><i class="fa-solid fa-tv"></i>  Check the best recommended sub for you</p>
-            <button class="wish-sub-btn btn-sub" data-action="click->sub-modal#display">Generate my sub</button>
+            <button class="wish-sub-btn btn-sub" data-action="click->sub-modal#display">Last step</button>
           </div>
 
           <div class="modal-container d-none" data-sub-modal-target="modal" data-waiting-target="modal">
@@ -52,14 +52,14 @@
               </div>
               <br>
               <div id="time-modal">
-                <p><i class="fa-sharp fa-solid fa-clock"></i> How many hours are you available during the following month ?</p>
+                <p><i class="fa-sharp fa-solid fa-clock"></i>  How many hours are you available during the following month ?</p>
                 <%= simple_form_for(@user, url: profile_update_path(@user), html: { class: "my-form", novalidate: false, data: { action:  "submit->waiting#waiting" } }) do |f| %>
                   <%= f.input :availability,
                   label: false,
                   placeholder: "How many hours ?",
                   input_html: { class: 'input-login-sub', min: '1', data: { waiting_target: "number" } }
                   %>
-                  <%= f.submit "Validate my availability",
+                  <%= f.submit "Let's go !",
                     :class => "btn-sub2"
                   %>
                 <% end %>
