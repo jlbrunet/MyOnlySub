@@ -12,4 +12,6 @@ class User < ApplicationRecord
   validates :availability, numericality: { only_integer: true, greater_than: 0 }
 
   has_one_attached :photo
+
+  # qu'est ce qui empèche la création de compte ?
 end
