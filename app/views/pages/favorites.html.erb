@@ -58,7 +58,11 @@
 
           <div class="d-flex flex-column align-items-center">
             <div>
-              <%= cl_image_tag user.photo.key, class: "img-social" %>
+              <% if user.photo.attached? %>
+                <%= cl_image_tag user.photo.key, class: "img-social" %>
+              <% else %>
+                <%= image_tag asset_path('default_avatar.png'), class: "img-social" %>
+              <% end %>
               <div> <h3><%= user.first_name%></h3></div>
             </div>
 
