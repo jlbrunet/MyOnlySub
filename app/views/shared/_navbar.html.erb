@@ -86,11 +86,17 @@
             <div class="nav-link profile-name"><%= current_user.first_name %></div>
           </li>
           <li class="nav-item dropdown">
-            <%= cl_image_tag current_user.photo.key, height: 40, width: 40, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-              <div class="dropdown-menu dropdown-menu-end downdrop" aria-labelledby="navbarDropdown">
-                <%= link_to "Edit my profile", edit_user_registration_path, class: "dropdown-item" %>
-                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-              </div>
+
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, height: 40, width: 40, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= image_tag asset_path('default_avatar.png'), height: 40, width: 40, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
+
+                <div class="dropdown-menu dropdown-menu-end downdrop" aria-labelledby="navbarDropdown">
+                  <%= link_to "Edit my profile", edit_user_registration_path, class: "dropdown-item" %>
+                  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+                </div>
           </li>
         <% else %>
           <li class="nav-item">
