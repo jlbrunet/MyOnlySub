@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_14_142121) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_23_103517) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,7 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_142121) do
     t.string "first_name"
     t.string "last_name"
     t.integer "age"
-    t.integer "availability"
+    t.integer "availability", default: 30
     t.string "suggested_platform"
     t.string "necessary_series", default: [], array: true
     t.string "optional_series", default: [], array: true
