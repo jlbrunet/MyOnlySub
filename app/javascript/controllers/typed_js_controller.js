@@ -6,19 +6,21 @@ export default class extends Controller {
 
   connect() {
     setTimeout(() => {
-      new Typed(this.linesTarget, {
-        strings: ["to watch them all."],
+      setTimeout(() => {
+        new Typed(this.linesTarget, {
+          strings: ["to watch them all."],
+          typeSpeed: 90,
+          loop: false,
+          showCursor: false,
+        });
+      }, 1600);{
+        new Typed(this.lineTarget, {
+        strings: ["One Sub..."],
         typeSpeed: 90,
         loop: false,
         showCursor: false,
-      });
-    }, 1600);{
-    new Typed(this.lineTarget, {
-      strings: ["One Sub..."],
-      typeSpeed: 90,
-      loop: false,
-      showCursor: false,
-    });
-    }
+        });
+      }
+    }, 600);
   }
 }
