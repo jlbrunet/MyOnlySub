@@ -12,4 +12,5 @@ class User < ApplicationRecord
   validates :availability, numericality: { only_integer: true, greater_than: 0 }
 
   has_one_attached :photo
+  # faire que la homepage soit accessible sans co
 end
