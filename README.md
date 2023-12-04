@@ -7,7 +7,7 @@
   </a>
   <h3 align="center">My Only Sub</h3>
   <p align="center">
-     This application allows the visitors to create a list with a selection of movies and series to watch on streaming platforms and an available number of hours to watch them during the month. From this list and availability, the application renders the platform to subscribe the following month and the movies and series to watch. It allows the visitor to subscribe to one platform only each month and not to accumulate subscriptions. 
+     This application allows the user to create a list with a selection of movies and series to watch on streaming platforms and an available number of hours to watch them during the month. From this list and availability, the application renders the platform to subscribe the following month and the movies and series to watch. It allows the user to subscribe to one platform only each month and not to accumulate subscriptions. 
     <br />
     <br />
   </p>
@@ -40,13 +40,13 @@
 ## About The Project
 
 <br />
-<div align="center"><img src="app/assets/images/mosImage.png" alt="presentation of portfolio" width="600" height="350"></div>
+<div align="center"><img src="app/assets/images/mosImage.png" alt="presentation of portfolio" width="400" height="350"></div>
 <br />
 
-<div>This project has two interfaces :
+<div>This project has two main features :
   <ul>
-    <li><b>A student interface:</b> the student can choose a date on a calendar to declare an absence on its slot times and then see the available catch-ups on another calendar to take a class another day.</li>
-    <li><b>An administrator interface:</b> the director of the theater company can see all the absences and catch-ups by class and level.</li>
+    <li><b>The streaming platform to subscribe for the following month:</b> the user create a list with a selection of movies and series to watch on streaming platforms and an available number of hours to watch them during the month. From this list and availability, the application renders the platform to subscribe the following month and the movies and series to watch. It allows the visitor to subscribe to one platform only each month and not to accumulate subscriptions. </li>
+    <li><b>A social feature:</b> the user can mark movies and series as favorites and share their list with friends</li>
   </ul>
 </div>
 
