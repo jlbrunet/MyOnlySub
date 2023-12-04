@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     end
     respond_to do |format|
       format.text { render partial: "pages/list", locals: {movies: @results}, formats: [:html] }
-      format.html # Follow regular flow of Rails
+      format.html
     end
   end
 
