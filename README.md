@@ -104,15 +104,12 @@ dev
 
 ## Roadmap
 
-- [x] Implement student interface
-    - [x] Implement a dashboard for the student to see the informations of the class (level and teachers) and all the absences and catch-ups declared
-    - [x] Implement a flatpickr calendar that allows the student to declare an absence on the days he/she usually has class
-    - [x] Implement a flatpickr calendar that allows the student to declare catch-ups for all the absences he/she declared, on the slots available
-- [x] Impletement administrator interface
-    - [x] Implement a dashboard to see all the classes by day and level
-    - [x] Implement a page with all the absences and catch-ups for each class with the possibility to delete one and to add more available slots to catch-up a class
-    - [x] Implement a page with all the students for each class with the possibility to delete a student or change his/her class
-<br />
+- [x] Implement the streaming platform to subscribe for the following month
+    - [x] Implement a homepage with carousel of recent movies and series by streaming platform and by type (comedy, horror,...) and a searchbar. The user can add a movie/serie to their list and/or to their favorite. 
+    - [x] Implement a wishlist page with all the movies/series added and the possibility to order them by priority. The user can also add their availability time for the next month. 
+    - [x] Implement a sub page where the user can see the optimise platform to subscribe for the following month with the list of movies/series associated.
+- [x] Impletement the social feature
+    - [x] Implement a social page where the user can see their favorites and the favorites of their friends
 
 ## Contact
 
