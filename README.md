@@ -40,7 +40,7 @@
 ## About The Project
 
 <br />
-<div align="center"><img src="app/assets/images/parisImproImage.png" alt="presentation of portfolio" width="600" height="350"></div>
+<div align="center"><img src="app/assets/images/mosImage.png" alt="presentation of portfolio" width="600" height="350"></div>
 <br />
 
 <div>This project has two interfaces :
