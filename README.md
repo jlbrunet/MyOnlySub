@@ -75,7 +75,7 @@ Make sure you have the following installed on your system:
 
 1. Clone the repo
    ```sh
-   git clone git@github.com:jlbrunet/Paris_Impro_Application.git
+   git clone https://github.com/jlbrunet/MyOnlySub.git
    ```
 2. Install dependencies
    ```sh
